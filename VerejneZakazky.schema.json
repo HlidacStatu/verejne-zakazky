@@ -1,0 +1,402 @@
+{
+    "properties": {
+        "CPV": {
+            "items": {
+                "type": [
+                    "string",
+                    "null"
+                ]
+            },
+            "required": true,
+            "type": [
+                "array",
+                "null"
+            ]
+        },
+        "Dataset": {
+            "required": true,
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "DatumUverejneni": {
+            "required": true,
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "DatumUzavreniSmlouvy": {
+            "required": true,
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "DisplayId": {
+            "required": true,
+            "type": "integer"
+        },
+        "Dodavatele": {
+            "items": {
+                "properties": {
+                    "ICO": {
+                        "required": true,
+                        "type": [
+                            "string",
+                            "null"
+                        ]
+                    },
+                    "Jmeno": {
+                        "required": true,
+                        "type": [
+                            "string",
+                            "null"
+                        ]
+                    }
+                },
+                "type": [
+                    "object",
+                    "null"
+                ]
+            },
+            "required": true,
+            "type": [
+                "array",
+                "null"
+            ]
+        },
+        "Dokumenty": {
+            "items": {
+                "properties": {
+                    "CisloVerze": {
+                        "required": true,
+                        "type": [
+                            "string",
+                            "null"
+                        ]
+                    },
+                    "ContentType": {
+                        "required": true,
+                        "type": [
+                            "string",
+                            "null"
+                        ]
+                    },
+                    "DirectUrl": {
+                        "required": true,
+                        "type": [
+                            "string",
+                            "null"
+                        ]
+                    },
+                    "EnoughExtractedText": {
+                        "required": true,
+                        "type": "boolean"
+                    },
+                    "LastUpdate": {
+                        "required": true,
+                        "type": "string"
+                    },
+                    "Lenght": {
+                        "required": true,
+                        "type": "integer"
+                    },
+                    "OficialUrl": {
+                        "required": true,
+                        "type": [
+                            "string",
+                            "null"
+                        ]
+                    },
+                    "Pages": {
+                        "required": true,
+                        "type": "integer"
+                    },
+                    "PlainText": {
+                        "required": true,
+                        "type": [
+                            "string",
+                            "null"
+                        ]
+                    },
+                    "PlainTextContentQuality": {
+                        "enum": [
+                            0,
+                            1,
+                            2,
+                            3,
+                            4,
+                            5
+                        ],
+                        "required": true,
+                        "type": "integer"
+                    },
+                    "TypDokumentu": {
+                        "required": true,
+                        "type": [
+                            "string",
+                            "null"
+                        ]
+                    },
+                    "VlozenoNaProfil": {
+                        "required": true,
+                        "type": [
+                            "string",
+                            "null"
+                        ]
+                    },
+                    "WordCount": {
+                        "required": true,
+                        "type": "integer"
+                    }
+                },
+                "type": [
+                    "object",
+                    "null"
+                ]
+            },
+            "required": true,
+            "type": [
+                "array",
+                "null"
+            ]
+        },
+        "EvidencniCisloZakazky": {
+            "required": true,
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "Formulare": {
+            "items": {
+                "properties": {
+                    "Cislo": {
+                        "required": true,
+                        "type": [
+                            "string",
+                            "null"
+                        ]
+                    },
+                    "Druh": {
+                        "required": true,
+                        "type": [
+                            "string",
+                            "null"
+                        ]
+                    },
+                    "DruhRizeni": {
+                        "required": true,
+                        "type": [
+                            "string",
+                            "null"
+                        ]
+                    },
+                    "LimitVZ": {
+                        "required": true,
+                        "type": [
+                            "string",
+                            "null"
+                        ]
+                    },
+                    "OnlyOnProfile": {
+                        "required": true,
+                        "type": "boolean"
+                    },
+                    "TypFormulare": {
+                        "required": true,
+                        "type": [
+                            "string",
+                            "null"
+                        ]
+                    },
+                    "URL": {
+                        "required": true,
+                        "type": [
+                            "string",
+                            "null"
+                        ]
+                    },
+                    "Zverejnen": {
+                        "required": true,
+                        "type": [
+                            "string",
+                            "null"
+                        ]
+                    }
+                },
+                "type": [
+                    "object",
+                    "null"
+                ]
+            },
+            "required": true,
+            "type": [
+                "array",
+                "null"
+            ]
+        },
+        "Id": {
+            "required": true,
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "KonecnaHodnotaBezDPH": {
+            "required": true,
+            "type": [
+                "number",
+                "null"
+            ]
+        },
+        "KonecnaHodnotaMena": {
+            "required": true,
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "Kriteria": {
+            "items": {
+                "properties": {
+                    "Kriterium": {
+                        "required": true,
+                        "type": [
+                            "string",
+                            "null"
+                        ]
+                    },
+                    "Nazev": {
+                        "required": true,
+                        "type": [
+                            "string",
+                            "null"
+                        ]
+                    },
+                    "Poradi": {
+                        "required": true,
+                        "type": "integer"
+                    },
+                    "Vaha": {
+                        "required": true,
+                        "type": "number"
+                    }
+                },
+                "type": [
+                    "object",
+                    "null"
+                ]
+            },
+            "required": true,
+            "type": [
+                "array",
+                "null"
+            ]
+        },
+        "LastUpdated": {
+            "required": true,
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "LhutaDoruceni": {
+            "required": true,
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "NazevZakazky": {
+            "required": true,
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "OdhadovanaHodnotaBezDPH": {
+            "required": true,
+            "type": [
+                "number",
+                "null"
+            ]
+        },
+        "OdhadovanaHodnotaMena": {
+            "required": true,
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "PopisZakazky": {
+            "required": true,
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "PosledniZmena": {
+            "required": true,
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "RawHtml": {
+            "required": true,
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "StavVZ": {
+            "required": true,
+            "type": "integer"
+        },
+        "StavZakazky": {
+            "enum": [
+                0,
+                1,
+                100,
+                200,
+                300
+            ],
+            "required": true,
+            "type": "integer"
+        },
+        "Zadavatel": {
+            "properties": {
+                "ICO": {
+                    "required": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "Jmeno": {
+                    "required": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "required": true,
+            "type": [
+                "object",
+                "null"
+            ]
+        },
+        "ZakazkaNaProfiluId": {
+            "required": true,
+            "type": [
+                "string",
+                "null"
+            ]
+        }
+    },
+    "type": "object"
+}
