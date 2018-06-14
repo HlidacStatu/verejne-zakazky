@@ -1,402 +1,441 @@
 {
-    "properties": {
-        "CPV": {
-            "items": {
-                "type": [
-                    "string",
-                    "null"
-                ]
-            },
-            "required": true,
-            "type": [
-                "array",
-                "null"
-            ]
-        },
-        "Dataset": {
-            "required": true,
-            "type": [
-                "string",
-                "null"
-            ]
-        },
-        "DatumUverejneni": {
-            "required": true,
-            "type": [
-                "string",
-                "null"
-            ]
-        },
-        "DatumUzavreniSmlouvy": {
-            "required": true,
-            "type": [
-                "string",
-                "null"
-            ]
-        },
-        "DisplayId": {
-            "required": true,
-            "type": "integer"
-        },
-        "Dodavatele": {
-            "items": {
-                "properties": {
-                    "ICO": {
-                        "required": true,
-                        "type": [
-                            "string",
-                            "null"
-                        ]
-                    },
-                    "Jmeno": {
-                        "required": true,
-                        "type": [
-                            "string",
-                            "null"
-                        ]
-                    }
-                },
-                "type": [
-                    "object",
-                    "null"
-                ]
-            },
-            "required": true,
-            "type": [
-                "array",
-                "null"
-            ]
-        },
-        "Dokumenty": {
-            "items": {
-                "properties": {
-                    "CisloVerze": {
-                        "required": true,
-                        "type": [
-                            "string",
-                            "null"
-                        ]
-                    },
-                    "ContentType": {
-                        "required": true,
-                        "type": [
-                            "string",
-                            "null"
-                        ]
-                    },
-                    "DirectUrl": {
-                        "required": true,
-                        "type": [
-                            "string",
-                            "null"
-                        ]
-                    },
-                    "EnoughExtractedText": {
-                        "required": true,
-                        "type": "boolean"
-                    },
-                    "LastUpdate": {
-                        "required": true,
-                        "type": "string"
-                    },
-                    "Lenght": {
-                        "required": true,
-                        "type": "integer"
-                    },
-                    "OficialUrl": {
-                        "required": true,
-                        "type": [
-                            "string",
-                            "null"
-                        ]
-                    },
-                    "Pages": {
-                        "required": true,
-                        "type": "integer"
-                    },
-                    "PlainText": {
-                        "required": true,
-                        "type": [
-                            "string",
-                            "null"
-                        ]
-                    },
-                    "PlainTextContentQuality": {
-                        "enum": [
-                            0,
-                            1,
-                            2,
-                            3,
-                            4,
-                            5
-                        ],
-                        "required": true,
-                        "type": "integer"
-                    },
-                    "TypDokumentu": {
-                        "required": true,
-                        "type": [
-                            "string",
-                            "null"
-                        ]
-                    },
-                    "VlozenoNaProfil": {
-                        "required": true,
-                        "type": [
-                            "string",
-                            "null"
-                        ]
-                    },
-                    "WordCount": {
-                        "required": true,
-                        "type": "integer"
-                    }
-                },
-                "type": [
-                    "object",
-                    "null"
-                ]
-            },
-            "required": true,
-            "type": [
-                "array",
-                "null"
-            ]
-        },
-        "EvidencniCisloZakazky": {
-            "required": true,
-            "type": [
-                "string",
-                "null"
-            ]
-        },
-        "Formulare": {
-            "items": {
-                "properties": {
-                    "Cislo": {
-                        "required": true,
-                        "type": [
-                            "string",
-                            "null"
-                        ]
-                    },
-                    "Druh": {
-                        "required": true,
-                        "type": [
-                            "string",
-                            "null"
-                        ]
-                    },
-                    "DruhRizeni": {
-                        "required": true,
-                        "type": [
-                            "string",
-                            "null"
-                        ]
-                    },
-                    "LimitVZ": {
-                        "required": true,
-                        "type": [
-                            "string",
-                            "null"
-                        ]
-                    },
-                    "OnlyOnProfile": {
-                        "required": true,
-                        "type": "boolean"
-                    },
-                    "TypFormulare": {
-                        "required": true,
-                        "type": [
-                            "string",
-                            "null"
-                        ]
-                    },
-                    "URL": {
-                        "required": true,
-                        "type": [
-                            "string",
-                            "null"
-                        ]
-                    },
-                    "Zverejnen": {
-                        "required": true,
-                        "type": [
-                            "string",
-                            "null"
-                        ]
-                    }
-                },
-                "type": [
-                    "object",
-                    "null"
-                ]
-            },
-            "required": true,
-            "type": [
-                "array",
-                "null"
-            ]
-        },
-        "Id": {
-            "required": true,
-            "type": [
-                "string",
-                "null"
-            ]
-        },
-        "KonecnaHodnotaBezDPH": {
-            "required": true,
-            "type": [
-                "number",
-                "null"
-            ]
-        },
-        "KonecnaHodnotaMena": {
-            "required": true,
-            "type": [
-                "string",
-                "null"
-            ]
-        },
-        "Kriteria": {
-            "items": {
-                "properties": {
-                    "Kriterium": {
-                        "required": true,
-                        "type": [
-                            "string",
-                            "null"
-                        ]
-                    },
-                    "Nazev": {
-                        "required": true,
-                        "type": [
-                            "string",
-                            "null"
-                        ]
-                    },
-                    "Poradi": {
-                        "required": true,
-                        "type": "integer"
-                    },
-                    "Vaha": {
-                        "required": true,
-                        "type": "number"
-                    }
-                },
-                "type": [
-                    "object",
-                    "null"
-                ]
-            },
-            "required": true,
-            "type": [
-                "array",
-                "null"
-            ]
-        },
-        "LastUpdated": {
-            "required": true,
-            "type": [
-                "string",
-                "null"
-            ]
-        },
-        "LhutaDoruceni": {
-            "required": true,
-            "type": [
-                "string",
-                "null"
-            ]
-        },
-        "NazevZakazky": {
-            "required": true,
-            "type": [
-                "string",
-                "null"
-            ]
-        },
-        "OdhadovanaHodnotaBezDPH": {
-            "required": true,
-            "type": [
-                "number",
-                "null"
-            ]
-        },
-        "OdhadovanaHodnotaMena": {
-            "required": true,
-            "type": [
-                "string",
-                "null"
-            ]
-        },
-        "PopisZakazky": {
-            "required": true,
-            "type": [
-                "string",
-                "null"
-            ]
-        },
-        "PosledniZmena": {
-            "required": true,
-            "type": [
-                "string",
-                "null"
-            ]
-        },
-        "RawHtml": {
-            "required": true,
-            "type": [
-                "string",
-                "null"
-            ]
-        },
-        "StavVZ": {
-            "required": true,
-            "type": "integer"
-        },
-        "StavZakazky": {
-            "enum": [
-                0,
-                1,
-                100,
-                200,
-                300
-            ],
-            "required": true,
-            "type": "integer"
-        },
-        "Zadavatel": {
-            "properties": {
-                "ICO": {
-                    "required": true,
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "Jmeno": {
-                    "required": true,
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                }
-            },
-            "required": true,
-            "type": [
-                "object",
-                "null"
-            ]
-        },
-        "ZakazkaNaProfiluId": {
-            "required": true,
-            "type": [
-                "string",
-                "null"
-            ]
-        }
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "VerejnaZakazka",
+  "type": "object",
+  "description": "Struktura verejne zakazky v Hlidaci Statu",
+  "additionalProperties": false,
+  "properties": {
+    "Id": {
+      "type": [
+        "null",
+        "string"
+      ],
+      "description": "Unikátní ID zakázky. Nevyplňujte, ID vygeneruje Hlídač Státu."
     },
-    "type": "object"
+    "EvidencniCisloZakazky": {
+      "type": [
+        "null",
+        "string"
+      ],
+      "description": "Evidenční číslo zakázky ve VVZ"
+    },
+    "ZakazkaNaProfiluId": {
+      "type": [
+        "null",
+        "string"
+      ],
+      "description": "ID profilu zadavatele, na kterém tato zakázka."
+    },
+    "Formulare": {
+      "type": [
+        "array",
+        "null"
+      ],
+      "description": "Všechny formuláře spojené se zakázkou",
+      "items": {
+        "$ref": "#/definitions/Formular"
+      }
+    },
+    "Kriteria": {
+      "type": [
+        "array",
+        "null"
+      ],
+      "description": "Hodnotící kritéria zakázky",
+      "items": {
+        "$ref": "#/definitions/HodnoticiKriteria"
+      }
+    },
+    "DisplayId": {
+      "type": "integer",
+      "description": "Nepouzito",
+      "format": "int32"
+    },
+    "Dataset": {
+      "type": [
+        "null",
+        "string"
+      ],
+      "description": "Hodnota 'VVZ-2006' pro zakázky z VVZ od 2006-2016, 'VVZ-2016' pro nové dle zákona o VZ z 2016"
+    },
+    "Zadavatel": {
+      "description": "Zadavatel",
+      "oneOf": [
+        {
+          "type": "null"
+        },
+        {
+          "$ref": "#/definitions/Subject"
+        }
+      ]
+    },
+    "Dodavatele": {
+      "type": [
+        "array",
+        "null"
+      ],
+      "description": "Dodavatele",
+      "items": {
+        "$ref": "#/definitions/Subject"
+      }
+    },
+    "NazevZakazky": {
+      "type": [
+        "null",
+        "string"
+      ],
+      "description": "Název zakázky"
+    },
+    "PopisZakazky": {
+      "type": [
+        "null",
+        "string"
+      ],
+      "description": "Popis zakázky"
+    },
+    "Dokumenty": {
+      "type": [
+        "array",
+        "null"
+      ],
+      "description": "Zadávací dokumentace a další dokumenty spojené se zakázkou",
+      "items": {
+        "$ref": "#/definitions/Document"
+      }
+    },
+    "CPV": {
+      "type": [
+        "array",
+        "null"
+      ],
+      "description": "CPV kódy určující oblast VZ",
+      "items": {
+        "type": "string"
+      }
+    },
+    "DatumUverejneni": {
+      "type": [
+        "null",
+        "string"
+      ],
+      "description": "Datum uveřejnění",
+      "format": "date-time"
+    },
+    "LhutaDoruceni": {
+      "type": [
+        "null",
+        "string"
+      ],
+      "description": "Lhůta pro doručení nabídek",
+      "format": "date-time"
+    },
+    "DatumUzavreniSmlouvy": {
+      "type": [
+        "null",
+        "string"
+      ],
+      "description": "Datum uzavření smlouvy u ukončené zakázky",
+      "format": "date-time"
+    },
+    "PosledniZmena": {
+      "type": [
+        "null",
+        "string"
+      ],
+      "description": "Poslední změna VZ podle poslední změny formuláře.",
+      "format": "date-time"
+    },
+    "StavVZ": {
+      "type": "integer",
+      "description": "Číselná hodnota odvozeného stavu zakázky z enumerace 'StavyZakazky'.",
+      "format": "int32"
+    },
+    "StavZakazky": {
+      "$ref": "#/definitions/StavyZakazky"
+    },
+    "LastUpdated": {
+      "type": [
+        "null",
+        "string"
+      ],
+      "format": "date-time"
+    },
+    "OdhadovanaHodnotaBezDPH": {
+      "type": [
+        "null",
+        "number"
+      ],
+      "description": "Odhadovaná hodnota zakázky bez DPH.",
+      "format": "decimal"
+    },
+    "KonecnaHodnotaBezDPH": {
+      "type": [
+        "null",
+        "number"
+      ],
+      "description": "Konečná (vysoutěžená) hodnota zakázky bez DPH.",
+      "format": "decimal"
+    },
+    "OdhadovanaHodnotaMena": {
+      "type": [
+        "null",
+        "string"
+      ],
+      "description": "Měna odhadovaná hodnoty zakázky."
+    },
+    "KonecnaHodnotaMena": {
+      "type": [
+        "null",
+        "string"
+      ],
+      "description": "Měna konečné hodnoty zakázky."
+    },
+    "RawHtml": {
+      "type": [
+        "null",
+        "string"
+      ],
+      "description": "HTML stránky zakázky, pokud bylo parsováno z HTML"
+    }
+  },
+  "definitions": {
+    "Formular": {
+      "type": "object",
+      "description": "Formuláře spojené s touto zakázkou. Vychazi z XML na VVZ z www.isvz.cz/ISVZ/MetodickaPodpora/Napovedaopendata.pdf",
+      "additionalProperties": false,
+      "properties": {
+        "Cislo": {
+          "type": [
+            "null",
+            "string"
+          ],
+          "description": "Číslo formuláře"
+        },
+        "Druh": {
+          "type": [
+            "null",
+            "string"
+          ],
+          "description": "Druh formuláře (F01-F31, CZ01-CZ02)"
+        },
+        "TypFormulare": {
+          "type": [
+            "null",
+            "string"
+          ],
+          "description": "Typ formuláře (řádný/opravný), nebo nevyplněno (pak je řádný)"
+        },
+        "LimitVZ": {
+          "type": [
+            "null",
+            "string"
+          ],
+          "description": "Limit VZ (nadlimitní/podlimitní/VZMR)"
+        },
+        "DruhRizeni": {
+          "type": [
+            "null",
+            "string"
+          ],
+          "description": "Druh řízení dle ZVZ"
+        },
+        "Zverejnen": {
+          "type": [
+            "null",
+            "string"
+          ],
+          "description": "Datum zveřejnění.",
+          "format": "date-time"
+        },
+        "URL": {
+          "type": [
+            "null",
+            "string"
+          ],
+          "description": "URL formuláře, může být prázdné"
+        },
+        "OnlyOnProfile": {
+          "type": "boolean",
+          "description": "Je zakazka pouze na profilu zadavatele?"
+        }
+      }
+    },
+    "HodnoticiKriteria": {
+      "type": "object",
+      "description": "Hodnotící kritéria veřejné zakázky",
+      "additionalProperties": false,
+      "properties": {
+        "Poradi": {
+          "type": "integer",
+          "description": "Pořadí.",
+          "format": "int32"
+        },
+        "Kriterium": {
+          "type": [
+            "null",
+            "string"
+          ],
+          "description": "Popis kritéria"
+        },
+        "Nazev": {
+          "type": [
+            "null",
+            "string"
+          ],
+          "description": "Název kritéria"
+        },
+        "Vaha": {
+          "type": "number",
+          "description": "Váha v hodnocení",
+          "format": "decimal"
+        }
+      }
+    },
+    "Subject": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "ICO": {
+          "type": [
+            "null",
+            "string"
+          ],
+          "description": "IC subjektu"
+        },
+        "Jmeno": {
+          "type": [
+            "null",
+            "string"
+          ],
+          "description": "Obchodní jméno"
+        }
+      }
+    },
+    "Document": {
+      "type": "object",
+      "description": "Dokumenty příslušející zakázky (typicky zadávací a smluvní dokumentace)",
+      "additionalProperties": false,
+      "properties": {
+        "OficialUrl": {
+          "type": [
+            "null",
+            "string"
+          ],
+          "description": "URL uvedené v profilu zadavatele"
+        },
+        "DirectUrl": {
+          "type": [
+            "null",
+            "string"
+          ],
+          "description": "Přímé URL na tento dokument."
+        },
+        "TypDokumentu": {
+          "type": [
+            "null",
+            "string"
+          ],
+          "description": "Formát dokumentu."
+        },
+        "VlozenoNaProfil": {
+          "type": [
+            "null",
+            "string"
+          ],
+          "description": "Datum vložení, uveřejnění dokumentu.",
+          "format": "date-time"
+        },
+        "CisloVerze": {
+          "type": [
+            "null",
+            "string"
+          ],
+          "description": "Číslo verze"
+        },
+        "PlainText": {
+          "type": [
+            "null",
+            "string"
+          ],
+          "description": "Neuvádět, obsah dokumentu v plain textu pro ftx vyhledávání"
+        },
+        "PlainTextContentQuality": {
+          "description": "Neuvádět.",
+          "oneOf": [
+            {
+              "$ref": "#/definitions/DataQualityEnum"
+            }
+          ]
+        },
+        "LastUpdate": {
+          "type": "string",
+          "description": "Neuvádět",
+          "format": "date-time"
+        },
+        "ContentType": {
+          "type": [
+            "null",
+            "string"
+          ],
+          "description": "Neuvádět"
+        },
+        "Lenght": {
+          "type": "integer",
+          "description": "Neuvádět",
+          "format": "int32"
+        },
+        "WordCount": {
+          "type": "integer",
+          "description": "Neuvádět",
+          "format": "int32"
+        },
+        "Pages": {
+          "type": "integer",
+          "description": "Neuvádět",
+          "format": "int32"
+        },
+        "EnoughExtractedText": {
+          "type": "boolean"
+        }
+      }
+    },
+    "DataQualityEnum": {
+      "type": "integer",
+      "description": "",
+      "x-enumNames": [
+        "Unknown",
+        "Exact",
+        "Calculated",
+        "Parsed",
+        "Estimated",
+        "AddedManual"
+      ],
+      "enum": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ]
+    },
+    "StavyZakazky": {
+      "type": "integer",
+      "description": "",
+      "x-enumNames": [
+        "Jine",
+        "Umysl",
+        "Zahajeno",
+        "Vyhodnocovani",
+        "Ukonceno"
+      ],
+      "enum": [
+        0,
+        1,
+        100,
+        200,
+        300
+      ]
+    }
+  }
 }
