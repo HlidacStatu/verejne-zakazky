@@ -1,0 +1,887 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="main.css">
+    <meta charset="UTF-8">
+    <title>Bootprint</title>
+                                                         </head>
+<body>
+<div class="container">
+    <div id="definition-VerejnaZakazka" class="panel panel-definition">
+            <div class="panel-heading">
+                    <h3 class="panel-title">VerejnaZakazka</h3>
+            </div>
+        <div class="panel-body">
+                    <section class="json-schema-description">
+                        <p>Struktura verejne zakazky v Hlidaci Statu</p>
+                
+                    </section>
+                
+                        <section class="json-schema-properties">
+                            <dl>
+                                    <dt data-property-name="Id">
+                                        <span class="json-property-name">Id:</span>
+                                        
+                                        <span class="json-property-type">null,string</span>
+                                        <span class="json-property-range" title="Value limits"></span>
+                                        
+                                    </dt>
+                                    <dd>
+                                        <p>Unikátní ID zakázky. Nevyplňujte, ID vygeneruje Hlídač Státu.</p>
+                        
+                                        <div class="json-inner-schema">
+                                            
+                                        </div>
+                                    </dd>
+                                    <dt data-property-name="EvidencniCisloZakazky">
+                                        <span class="json-property-name">EvidencniCisloZakazky:</span>
+                                        
+                                        <span class="json-property-type">null,string</span>
+                                        <span class="json-property-range" title="Value limits"></span>
+                                        
+                                    </dt>
+                                    <dd>
+                                        <p>Evidenční číslo zakázky ve VVZ</p>
+                        
+                                        <div class="json-inner-schema">
+                                            
+                                        </div>
+                                    </dd>
+                                    <dt data-property-name="ZakazkaNaProfiluId">
+                                        <span class="json-property-name">ZakazkaNaProfiluId:</span>
+                                        
+                                        <span class="json-property-type">null,string</span>
+                                        <span class="json-property-range" title="Value limits"></span>
+                                        
+                                    </dt>
+                                    <dd>
+                                        <p>ID profilu zadavatele, na kterém tato zakázka.</p>
+                        
+                                        <div class="json-inner-schema">
+                                            
+                                        </div>
+                                    </dd>
+                                    <dt data-property-name="Formulare">
+                                        <span class="json-property-name">Formulare:</span>
+                                        
+                                        <span class="json-property-type">array,null</span>
+                                        <span class="json-property-range" title="Value limits"></span>
+                                        
+                                    </dt>
+                                    <dd>
+                                        <p>Všechny formuláře spojené se zakázkou</p>
+                        
+                                        <div class="json-inner-schema">
+                                            
+                                        </div>
+                                    </dd>
+                                    <dt data-property-name="Kriteria">
+                                        <span class="json-property-name">Kriteria:</span>
+                                        
+                                        <span class="json-property-type">array,null</span>
+                                        <span class="json-property-range" title="Value limits"></span>
+                                        
+                                    </dt>
+                                    <dd>
+                                        <p>Hodnotící kritéria zakázky</p>
+                        
+                                        <div class="json-inner-schema">
+                                            
+                                        </div>
+                                    </dd>
+                                    <dt data-property-name="DisplayId">
+                                        <span class="json-property-name">DisplayId:</span>
+                                        
+                                        <span class="json-property-type">integer</span>    <span class="json-property-format">(int32)</span>
+                                        <span class="json-property-range" title="Value limits"></span>
+                                        
+                                    </dt>
+                                    <dd>
+                                        <p>Nepouzito</p>
+                        
+                                        <div class="json-inner-schema">
+                                            
+                                        </div>
+                                    </dd>
+                                    <dt data-property-name="Dataset">
+                                        <span class="json-property-name">Dataset:</span>
+                                        
+                                        <span class="json-property-type">null,string</span>
+                                        <span class="json-property-range" title="Value limits"></span>
+                                        
+                                    </dt>
+                                    <dd>
+                                        <p>Hodnota &#39;VVZ-2006&#39; pro zakázky z VVZ od 2006-2016, &#39;VVZ-2016&#39; pro nové dle zákona o VZ z 2016</p>
+                        
+                                        <div class="json-inner-schema">
+                                            
+                                        </div>
+                                    </dd>
+                                    <dt data-property-name="Zadavatel">
+                                        <span class="json-property-name">Zadavatel:</span>
+                                        
+                                        <span class="json-property-type"></span>
+                                        <span class="json-property-range" title="Value limits"></span>
+                                        
+                                    </dt>
+                                    <dd>
+                                        <p>Zadavatel</p>
+                        
+                                        <div class="json-inner-schema">
+                                            
+                                        </div>
+                                    </dd>
+                                    <dt data-property-name="Dodavatele">
+                                        <span class="json-property-name">Dodavatele:</span>
+                                        
+                                        <span class="json-property-type">array,null</span>
+                                        <span class="json-property-range" title="Value limits"></span>
+                                        
+                                    </dt>
+                                    <dd>
+                                        <p>Dodavatele</p>
+                        
+                                        <div class="json-inner-schema">
+                                            
+                                        </div>
+                                    </dd>
+                                    <dt data-property-name="NazevZakazky">
+                                        <span class="json-property-name">NazevZakazky:</span>
+                                        
+                                        <span class="json-property-type">null,string</span>
+                                        <span class="json-property-range" title="Value limits"></span>
+                                        
+                                    </dt>
+                                    <dd>
+                                        <p>Název zakázky</p>
+                        
+                                        <div class="json-inner-schema">
+                                            
+                                        </div>
+                                    </dd>
+                                    <dt data-property-name="PopisZakazky">
+                                        <span class="json-property-name">PopisZakazky:</span>
+                                        
+                                        <span class="json-property-type">null,string</span>
+                                        <span class="json-property-range" title="Value limits"></span>
+                                        
+                                    </dt>
+                                    <dd>
+                                        <p>Popis zakázky</p>
+                        
+                                        <div class="json-inner-schema">
+                                            
+                                        </div>
+                                    </dd>
+                                    <dt data-property-name="Dokumenty">
+                                        <span class="json-property-name">Dokumenty:</span>
+                                        
+                                        <span class="json-property-type">array,null</span>
+                                        <span class="json-property-range" title="Value limits"></span>
+                                        
+                                    </dt>
+                                    <dd>
+                                        <p>Zadávací dokumentace a další dokumenty spojené se zakázkou</p>
+                        
+                                        <div class="json-inner-schema">
+                                            
+                                        </div>
+                                    </dd>
+                                    <dt data-property-name="CPV">
+                                        <span class="json-property-name">CPV:</span>
+                                        
+                                        <span class="json-property-type">array,null</span>
+                                        <span class="json-property-range" title="Value limits"></span>
+                                        
+                                    </dt>
+                                    <dd>
+                                        <p>CPV kódy určující oblast VZ</p>
+                        
+                                        <div class="json-inner-schema">
+                                            
+                                        </div>
+                                    </dd>
+                                    <dt data-property-name="DatumUverejneni">
+                                        <span class="json-property-name">DatumUverejneni:</span>
+                                        
+                                        <span class="json-property-type">null,string</span>    <span class="json-property-format">(date-time)</span>
+                                        <span class="json-property-range" title="Value limits"></span>
+                                        
+                                    </dt>
+                                    <dd>
+                                        <p>Datum uveřejnění</p>
+                        
+                                        <div class="json-inner-schema">
+                                            
+                                        </div>
+                                    </dd>
+                                    <dt data-property-name="LhutaDoruceni">
+                                        <span class="json-property-name">LhutaDoruceni:</span>
+                                        
+                                        <span class="json-property-type">null,string</span>    <span class="json-property-format">(date-time)</span>
+                                        <span class="json-property-range" title="Value limits"></span>
+                                        
+                                    </dt>
+                                    <dd>
+                                        <p>Lhůta pro doručení nabídek</p>
+                        
+                                        <div class="json-inner-schema">
+                                            
+                                        </div>
+                                    </dd>
+                                    <dt data-property-name="DatumUzavreniSmlouvy">
+                                        <span class="json-property-name">DatumUzavreniSmlouvy:</span>
+                                        
+                                        <span class="json-property-type">null,string</span>    <span class="json-property-format">(date-time)</span>
+                                        <span class="json-property-range" title="Value limits"></span>
+                                        
+                                    </dt>
+                                    <dd>
+                                        <p>Datum uzavření smlouvy u ukončené zakázky</p>
+                        
+                                        <div class="json-inner-schema">
+                                            
+                                        </div>
+                                    </dd>
+                                    <dt data-property-name="PosledniZmena">
+                                        <span class="json-property-name">PosledniZmena:</span>
+                                        
+                                        <span class="json-property-type">null,string</span>    <span class="json-property-format">(date-time)</span>
+                                        <span class="json-property-range" title="Value limits"></span>
+                                        
+                                    </dt>
+                                    <dd>
+                                        <p>Poslední změna VZ podle poslední změny formuláře.</p>
+                        
+                                        <div class="json-inner-schema">
+                                            
+                                        </div>
+                                    </dd>
+                                    <dt data-property-name="StavVZ">
+                                        <span class="json-property-name">StavVZ:</span>
+                                        
+                                        <span class="json-property-type">integer</span>    <span class="json-property-format">(int32)</span>
+                                        <span class="json-property-range" title="Value limits"></span>
+                                        
+                                    </dt>
+                                    <dd>
+                                        <p>Číselná hodnota odvozeného stavu zakázky z enumerace &#39;StavyZakazky&#39;.</p>
+                        
+                                        <div class="json-inner-schema">
+                                            
+                                        </div>
+                                    </dd>
+                                    <dt data-property-name="StavZakazky">
+                                        <span class="json-property-name">StavZakazky:</span>
+                                        
+                                        <span class="json-property-type">    <a class="json-schema-ref" href="#/definitions/StavyZakazky">StavyZakazky</a>
+                                        </span>
+                                        <span class="json-property-range" title="Value limits"></span>
+                                        
+                                    </dt>
+                                    <dd>
+                                        
+                                        <div class="json-inner-schema">
+                                            
+                                        </div>
+                                    </dd>
+                                    <dt data-property-name="LastUpdated">
+                                        <span class="json-property-name">LastUpdated:</span>
+                                        
+                                        <span class="json-property-type">null,string</span>    <span class="json-property-format">(date-time)</span>
+                                        <span class="json-property-range" title="Value limits"></span>
+                                        
+                                    </dt>
+                                    <dd>
+                                        
+                                        <div class="json-inner-schema">
+                                            
+                                        </div>
+                                    </dd>
+                                    <dt data-property-name="OdhadovanaHodnotaBezDPH">
+                                        <span class="json-property-name">OdhadovanaHodnotaBezDPH:</span>
+                                        
+                                        <span class="json-property-type">null,number</span>    <span class="json-property-format">(decimal)</span>
+                                        <span class="json-property-range" title="Value limits"></span>
+                                        
+                                    </dt>
+                                    <dd>
+                                        <p>Odhadovaná hodnota zakázky bez DPH.</p>
+                        
+                                        <div class="json-inner-schema">
+                                            
+                                        </div>
+                                    </dd>
+                                    <dt data-property-name="KonecnaHodnotaBezDPH">
+                                        <span class="json-property-name">KonecnaHodnotaBezDPH:</span>
+                                        
+                                        <span class="json-property-type">null,number</span>    <span class="json-property-format">(decimal)</span>
+                                        <span class="json-property-range" title="Value limits"></span>
+                                        
+                                    </dt>
+                                    <dd>
+                                        <p>Konečná (vysoutěžená) hodnota zakázky bez DPH.</p>
+                        
+                                        <div class="json-inner-schema">
+                                            
+                                        </div>
+                                    </dd>
+                                    <dt data-property-name="OdhadovanaHodnotaMena">
+                                        <span class="json-property-name">OdhadovanaHodnotaMena:</span>
+                                        
+                                        <span class="json-property-type">null,string</span>
+                                        <span class="json-property-range" title="Value limits"></span>
+                                        
+                                    </dt>
+                                    <dd>
+                                        <p>Měna odhadovaná hodnoty zakázky.</p>
+                        
+                                        <div class="json-inner-schema">
+                                            
+                                        </div>
+                                    </dd>
+                                    <dt data-property-name="KonecnaHodnotaMena">
+                                        <span class="json-property-name">KonecnaHodnotaMena:</span>
+                                        
+                                        <span class="json-property-type">null,string</span>
+                                        <span class="json-property-range" title="Value limits"></span>
+                                        
+                                    </dt>
+                                    <dd>
+                                        <p>Měna konečné hodnoty zakázky.</p>
+                        
+                                        <div class="json-inner-schema">
+                                            
+                                        </div>
+                                    </dd>
+                                    <dt data-property-name="RawHtml">
+                                        <span class="json-property-name">RawHtml:</span>
+                                        
+                                        <span class="json-property-type">null,string</span>
+                                        <span class="json-property-range" title="Value limits"></span>
+                                        
+                                    </dt>
+                                    <dd>
+                                        <p>HTML stránky zakázky, pokud bylo parsováno z HTML</p>
+                        
+                                        <div class="json-inner-schema">
+                                            
+                                        </div>
+                                    </dd>
+                            </dl>
+                        </section>
+        </div>
+    </div>    <h2>Definitions</h2>
+                <div id="definition-DataQualityEnum" class="panel panel-definition">
+                        <div class="panel-heading">
+                                <h3 class="panel-title"><a name="/definitions/DataQualityEnum"></a>DataQualityEnum:
+                                    <span class="json-property-type">
+                <span class="json-property-type">integer</span>    <span class="json-property-enum" title="Possible values">, x &isin; {
+                                <span class="json-property-enum-item">0</span>
+                            ,
+                                <span class="json-property-enum-item">1</span>
+                            ,
+                                <span class="json-property-enum-item">2</span>
+                            ,
+                                <span class="json-property-enum-item">3</span>
+                            ,
+                                <span class="json-property-enum-item">4</span>
+                            ,
+                                <span class="json-property-enum-item">5</span>
+                            
+                        }
+                        </span>
+                <span class="json-property-range" title="Value limits"></span>
+                
+                </span>
+                                </h3>
+                        </div>
+                    <div class="panel-body">
+                            
+                    </div>
+                </div>        <div id="definition-Document" class="panel panel-definition">
+                        <div class="panel-heading">
+                                <h3 class="panel-title"><a name="/definitions/Document"></a>Document:
+                                    <span class="json-property-type">
+                <span class="json-property-type">object</span>
+                <span class="json-property-range" title="Value limits"></span>
+                
+                </span>
+                                </h3>
+                        </div>
+                    <div class="panel-body">
+                                <section class="json-schema-description">
+                                    <p>Dokumenty příslušející zakázky (typicky zadávací a smluvní dokumentace)</p>
+                            
+                                </section>
+                            
+                                    <section class="json-schema-properties">
+                                        <dl>
+                                                <dt data-property-name="OficialUrl">
+                                                    <span class="json-property-name">OficialUrl:</span>
+                                                    
+                                                    <span class="json-property-type">null,string</span>
+                                                    <span class="json-property-range" title="Value limits"></span>
+                                                    
+                                                </dt>
+                                                <dd>
+                                                    <p>URL uvedené v profilu zadavatele</p>
+                                    
+                                                    <div class="json-inner-schema">
+                                                        
+                                                    </div>
+                                                </dd>
+                                                <dt data-property-name="DirectUrl">
+                                                    <span class="json-property-name">DirectUrl:</span>
+                                                    
+                                                    <span class="json-property-type">null,string</span>
+                                                    <span class="json-property-range" title="Value limits"></span>
+                                                    
+                                                </dt>
+                                                <dd>
+                                                    <p>Přímé URL na tento dokument.</p>
+                                    
+                                                    <div class="json-inner-schema">
+                                                        
+                                                    </div>
+                                                </dd>
+                                                <dt data-property-name="TypDokumentu">
+                                                    <span class="json-property-name">TypDokumentu:</span>
+                                                    
+                                                    <span class="json-property-type">null,string</span>
+                                                    <span class="json-property-range" title="Value limits"></span>
+                                                    
+                                                </dt>
+                                                <dd>
+                                                    <p>Formát dokumentu.</p>
+                                    
+                                                    <div class="json-inner-schema">
+                                                        
+                                                    </div>
+                                                </dd>
+                                                <dt data-property-name="VlozenoNaProfil">
+                                                    <span class="json-property-name">VlozenoNaProfil:</span>
+                                                    
+                                                    <span class="json-property-type">null,string</span>    <span class="json-property-format">(date-time)</span>
+                                                    <span class="json-property-range" title="Value limits"></span>
+                                                    
+                                                </dt>
+                                                <dd>
+                                                    <p>Datum vložení, uveřejnění dokumentu.</p>
+                                    
+                                                    <div class="json-inner-schema">
+                                                        
+                                                    </div>
+                                                </dd>
+                                                <dt data-property-name="CisloVerze">
+                                                    <span class="json-property-name">CisloVerze:</span>
+                                                    
+                                                    <span class="json-property-type">null,string</span>
+                                                    <span class="json-property-range" title="Value limits"></span>
+                                                    
+                                                </dt>
+                                                <dd>
+                                                    <p>Číslo verze</p>
+                                    
+                                                    <div class="json-inner-schema">
+                                                        
+                                                    </div>
+                                                </dd>
+                                                <dt data-property-name="PlainText">
+                                                    <span class="json-property-name">PlainText:</span>
+                                                    
+                                                    <span class="json-property-type">null,string</span>
+                                                    <span class="json-property-range" title="Value limits"></span>
+                                                    
+                                                </dt>
+                                                <dd>
+                                                    <p>Neuvádět, obsah dokumentu v plain textu pro ftx vyhledávání</p>
+                                    
+                                                    <div class="json-inner-schema">
+                                                        
+                                                    </div>
+                                                </dd>
+                                                <dt data-property-name="PlainTextContentQuality">
+                                                    <span class="json-property-name">PlainTextContentQuality:</span>
+                                                    
+                                                    <span class="json-property-type"></span>
+                                                    <span class="json-property-range" title="Value limits"></span>
+                                                    
+                                                </dt>
+                                                <dd>
+                                                    <p>Neuvádět.</p>
+                                    
+                                                    <div class="json-inner-schema">
+                                                        
+                                                    </div>
+                                                </dd>
+                                                <dt data-property-name="LastUpdate">
+                                                    <span class="json-property-name">LastUpdate:</span>
+                                                    
+                                                    <span class="json-property-type">string</span>    <span class="json-property-format">(date-time)</span>
+                                                    <span class="json-property-range" title="Value limits"></span>
+                                                    
+                                                </dt>
+                                                <dd>
+                                                    <p>Neuvádět</p>
+                                    
+                                                    <div class="json-inner-schema">
+                                                        
+                                                    </div>
+                                                </dd>
+                                                <dt data-property-name="ContentType">
+                                                    <span class="json-property-name">ContentType:</span>
+                                                    
+                                                    <span class="json-property-type">null,string</span>
+                                                    <span class="json-property-range" title="Value limits"></span>
+                                                    
+                                                </dt>
+                                                <dd>
+                                                    <p>Neuvádět</p>
+                                    
+                                                    <div class="json-inner-schema">
+                                                        
+                                                    </div>
+                                                </dd>
+                                                <dt data-property-name="Lenght">
+                                                    <span class="json-property-name">Lenght:</span>
+                                                    
+                                                    <span class="json-property-type">integer</span>    <span class="json-property-format">(int32)</span>
+                                                    <span class="json-property-range" title="Value limits"></span>
+                                                    
+                                                </dt>
+                                                <dd>
+                                                    <p>Neuvádět</p>
+                                    
+                                                    <div class="json-inner-schema">
+                                                        
+                                                    </div>
+                                                </dd>
+                                                <dt data-property-name="WordCount">
+                                                    <span class="json-property-name">WordCount:</span>
+                                                    
+                                                    <span class="json-property-type">integer</span>    <span class="json-property-format">(int32)</span>
+                                                    <span class="json-property-range" title="Value limits"></span>
+                                                    
+                                                </dt>
+                                                <dd>
+                                                    <p>Neuvádět</p>
+                                    
+                                                    <div class="json-inner-schema">
+                                                        
+                                                    </div>
+                                                </dd>
+                                                <dt data-property-name="Pages">
+                                                    <span class="json-property-name">Pages:</span>
+                                                    
+                                                    <span class="json-property-type">integer</span>    <span class="json-property-format">(int32)</span>
+                                                    <span class="json-property-range" title="Value limits"></span>
+                                                    
+                                                </dt>
+                                                <dd>
+                                                    <p>Neuvádět</p>
+                                    
+                                                    <div class="json-inner-schema">
+                                                        
+                                                    </div>
+                                                </dd>
+                                                <dt data-property-name="EnoughExtractedText">
+                                                    <span class="json-property-name">EnoughExtractedText:</span>
+                                                    
+                                                    <span class="json-property-type">boolean</span>
+                                                    <span class="json-property-range" title="Value limits"></span>
+                                                    
+                                                </dt>
+                                                <dd>
+                                                    
+                                                    <div class="json-inner-schema">
+                                                        
+                                                    </div>
+                                                </dd>
+                                        </dl>
+                                    </section>
+                    </div>
+                </div>        <div id="definition-Formular" class="panel panel-definition">
+                        <div class="panel-heading">
+                                <h3 class="panel-title"><a name="/definitions/Formular"></a>Formular:
+                                    <span class="json-property-type">
+                <span class="json-property-type">object</span>
+                <span class="json-property-range" title="Value limits"></span>
+                
+                </span>
+                                </h3>
+                        </div>
+                    <div class="panel-body">
+                                <section class="json-schema-description">
+                                    <p>Formuláře spojené s touto zakázkou. Vychazi z XML na VVZ z <a href="http://www.isvz.cz/ISVZ/MetodickaPodpora/Napovedaopendata.pdf">www.isvz.cz/ISVZ/MetodickaPodpora/Napovedaopendata.pdf</a></p>
+                            
+                                </section>
+                            
+                                    <section class="json-schema-properties">
+                                        <dl>
+                                                <dt data-property-name="Cislo">
+                                                    <span class="json-property-name">Cislo:</span>
+                                                    
+                                                    <span class="json-property-type">null,string</span>
+                                                    <span class="json-property-range" title="Value limits"></span>
+                                                    
+                                                </dt>
+                                                <dd>
+                                                    <p>Číslo formuláře</p>
+                                    
+                                                    <div class="json-inner-schema">
+                                                        
+                                                    </div>
+                                                </dd>
+                                                <dt data-property-name="Druh">
+                                                    <span class="json-property-name">Druh:</span>
+                                                    
+                                                    <span class="json-property-type">null,string</span>
+                                                    <span class="json-property-range" title="Value limits"></span>
+                                                    
+                                                </dt>
+                                                <dd>
+                                                    <p>Druh formuláře (F01-F31, CZ01-CZ02)</p>
+                                    
+                                                    <div class="json-inner-schema">
+                                                        
+                                                    </div>
+                                                </dd>
+                                                <dt data-property-name="TypFormulare">
+                                                    <span class="json-property-name">TypFormulare:</span>
+                                                    
+                                                    <span class="json-property-type">null,string</span>
+                                                    <span class="json-property-range" title="Value limits"></span>
+                                                    
+                                                </dt>
+                                                <dd>
+                                                    <p>Typ formuláře (řádný/opravný), nebo nevyplněno (pak je řádný)</p>
+                                    
+                                                    <div class="json-inner-schema">
+                                                        
+                                                    </div>
+                                                </dd>
+                                                <dt data-property-name="LimitVZ">
+                                                    <span class="json-property-name">LimitVZ:</span>
+                                                    
+                                                    <span class="json-property-type">null,string</span>
+                                                    <span class="json-property-range" title="Value limits"></span>
+                                                    
+                                                </dt>
+                                                <dd>
+                                                    <p>Limit VZ (nadlimitní/podlimitní/VZMR)</p>
+                                    
+                                                    <div class="json-inner-schema">
+                                                        
+                                                    </div>
+                                                </dd>
+                                                <dt data-property-name="DruhRizeni">
+                                                    <span class="json-property-name">DruhRizeni:</span>
+                                                    
+                                                    <span class="json-property-type">null,string</span>
+                                                    <span class="json-property-range" title="Value limits"></span>
+                                                    
+                                                </dt>
+                                                <dd>
+                                                    <p>Druh řízení dle ZVZ</p>
+                                    
+                                                    <div class="json-inner-schema">
+                                                        
+                                                    </div>
+                                                </dd>
+                                                <dt data-property-name="Zverejnen">
+                                                    <span class="json-property-name">Zverejnen:</span>
+                                                    
+                                                    <span class="json-property-type">null,string</span>    <span class="json-property-format">(date-time)</span>
+                                                    <span class="json-property-range" title="Value limits"></span>
+                                                    
+                                                </dt>
+                                                <dd>
+                                                    <p>Datum zveřejnění.</p>
+                                    
+                                                    <div class="json-inner-schema">
+                                                        
+                                                    </div>
+                                                </dd>
+                                                <dt data-property-name="URL">
+                                                    <span class="json-property-name">URL:</span>
+                                                    
+                                                    <span class="json-property-type">null,string</span>
+                                                    <span class="json-property-range" title="Value limits"></span>
+                                                    
+                                                </dt>
+                                                <dd>
+                                                    <p>URL formuláře, může být prázdné</p>
+                                    
+                                                    <div class="json-inner-schema">
+                                                        
+                                                    </div>
+                                                </dd>
+                                                <dt data-property-name="OnlyOnProfile">
+                                                    <span class="json-property-name">OnlyOnProfile:</span>
+                                                    
+                                                    <span class="json-property-type">boolean</span>
+                                                    <span class="json-property-range" title="Value limits"></span>
+                                                    
+                                                </dt>
+                                                <dd>
+                                                    <p>Je zakazka pouze na profilu zadavatele?</p>
+                                    
+                                                    <div class="json-inner-schema">
+                                                        
+                                                    </div>
+                                                </dd>
+                                        </dl>
+                                    </section>
+                    </div>
+                </div>        <div id="definition-HodnoticiKriteria" class="panel panel-definition">
+                        <div class="panel-heading">
+                                <h3 class="panel-title"><a name="/definitions/HodnoticiKriteria"></a>HodnoticiKriteria:
+                                    <span class="json-property-type">
+                <span class="json-property-type">object</span>
+                <span class="json-property-range" title="Value limits"></span>
+                
+                </span>
+                                </h3>
+                        </div>
+                    <div class="panel-body">
+                                <section class="json-schema-description">
+                                    <p>Hodnotící kritéria veřejné zakázky</p>
+                            
+                                </section>
+                            
+                                    <section class="json-schema-properties">
+                                        <dl>
+                                                <dt data-property-name="Poradi">
+                                                    <span class="json-property-name">Poradi:</span>
+                                                    
+                                                    <span class="json-property-type">integer</span>    <span class="json-property-format">(int32)</span>
+                                                    <span class="json-property-range" title="Value limits"></span>
+                                                    
+                                                </dt>
+                                                <dd>
+                                                    <p>Pořadí.</p>
+                                    
+                                                    <div class="json-inner-schema">
+                                                        
+                                                    </div>
+                                                </dd>
+                                                <dt data-property-name="Kriterium">
+                                                    <span class="json-property-name">Kriterium:</span>
+                                                    
+                                                    <span class="json-property-type">null,string</span>
+                                                    <span class="json-property-range" title="Value limits"></span>
+                                                    
+                                                </dt>
+                                                <dd>
+                                                    <p>Popis kritéria</p>
+                                    
+                                                    <div class="json-inner-schema">
+                                                        
+                                                    </div>
+                                                </dd>
+                                                <dt data-property-name="Nazev">
+                                                    <span class="json-property-name">Nazev:</span>
+                                                    
+                                                    <span class="json-property-type">null,string</span>
+                                                    <span class="json-property-range" title="Value limits"></span>
+                                                    
+                                                </dt>
+                                                <dd>
+                                                    <p>Název kritéria</p>
+                                    
+                                                    <div class="json-inner-schema">
+                                                        
+                                                    </div>
+                                                </dd>
+                                                <dt data-property-name="Vaha">
+                                                    <span class="json-property-name">Vaha:</span>
+                                                    
+                                                    <span class="json-property-type">number</span>    <span class="json-property-format">(decimal)</span>
+                                                    <span class="json-property-range" title="Value limits"></span>
+                                                    
+                                                </dt>
+                                                <dd>
+                                                    <p>Váha v hodnocení</p>
+                                    
+                                                    <div class="json-inner-schema">
+                                                        
+                                                    </div>
+                                                </dd>
+                                        </dl>
+                                    </section>
+                    </div>
+                </div>        <div id="definition-StavyZakazky" class="panel panel-definition">
+                        <div class="panel-heading">
+                                <h3 class="panel-title"><a name="/definitions/StavyZakazky"></a>StavyZakazky:
+                                    <span class="json-property-type">
+                <span class="json-property-type">integer</span>    <span class="json-property-enum" title="Possible values">, x &isin; {
+                                <span class="json-property-enum-item">0</span>
+                            ,
+                                <span class="json-property-enum-item">1</span>
+                            ,
+                                <span class="json-property-enum-item">100</span>
+                            ,
+                                <span class="json-property-enum-item">200</span>
+                            ,
+                                <span class="json-property-enum-item">300</span>
+                            
+                        }
+                        </span>
+                <span class="json-property-range" title="Value limits"></span>
+                
+                </span>
+                                </h3>
+                        </div>
+                    <div class="panel-body">
+                            
+                    </div>
+                </div>        <div id="definition-Subject" class="panel panel-definition">
+                        <div class="panel-heading">
+                                <h3 class="panel-title"><a name="/definitions/Subject"></a>Subject:
+                                    <span class="json-property-type">
+                <span class="json-property-type">object</span>
+                <span class="json-property-range" title="Value limits"></span>
+                
+                </span>
+                                </h3>
+                        </div>
+                    <div class="panel-body">
+                            
+                                    <section class="json-schema-properties">
+                                        <dl>
+                                                <dt data-property-name="ICO">
+                                                    <span class="json-property-name">ICO:</span>
+                                                    
+                                                    <span class="json-property-type">null,string</span>
+                                                    <span class="json-property-range" title="Value limits"></span>
+                                                    
+                                                </dt>
+                                                <dd>
+                                                    <p>IC subjektu</p>
+                                    
+                                                    <div class="json-inner-schema">
+                                                        
+                                                    </div>
+                                                </dd>
+                                                <dt data-property-name="Jmeno">
+                                                    <span class="json-property-name">Jmeno:</span>
+                                                    
+                                                    <span class="json-property-type">null,string</span>
+                                                    <span class="json-property-range" title="Value limits"></span>
+                                                    
+                                                </dt>
+                                                <dd>
+                                                    <p>Obchodní jméno</p>
+                                    
+                                                    <div class="json-inner-schema">
+                                                        
+                                                    </div>
+                                                </dd>
+                                        </dl>
+                                    </section>
+                    </div>
+                </div></div>
+<script src="bundle.js" type="application/javascript"></script>
+</body>
+</html>
