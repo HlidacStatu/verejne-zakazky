@@ -2,5 +2,5 @@
 
 
 
-Koukněte přímo na [Transformaci dat pro veřejné zakázky](https://github.com/HlidacStatu/VerejneZakazky/tree/master/Transformace%20dat).
+Koukněte přímo na [Transformaci dat pro veřejné zakázky](https://github.com/HlidacStatu/verejne-zakazky/tree/master/Transformace%20dat).
 
