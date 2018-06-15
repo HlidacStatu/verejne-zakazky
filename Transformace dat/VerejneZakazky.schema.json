@@ -335,7 +335,7 @@
             "null",
             "string"
           ],
-          "description": "Formát dokumentu."
+          "description": "Popis obsahu dokumentu, z profilu z pole 'typ_dokumentu'."
         },
         "VlozenoNaProfil": {
           "type": [
