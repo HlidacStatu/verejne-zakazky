@@ -82,7 +82,7 @@ www.profilzadavatele-vz.cz | 81
 
 #### Cílová datová struktura
 
-Cílová datová struktura, do které je potřeba zdrojová data ztransformovat, je popsaná tímto [JSON Schematem](/HlidacStatu/VerejneZakazky/blob/master/Transformace%20dat/VerejneZakazky.schema.json). Schema je dostupné i [v čitelnější podobě](https://hlidacstatu.github.io/VerejneZakazky/VerejneZakazkySchema/index.html).
+Cílová datová struktura, do které je potřeba zdrojová data ztransformovat, je popsaná tímto [JSON Schematem](/HlidacStatu/verejne-zakazky/blob/master/Transformace%20dat/VerejneZakazky.schema.json). Schema je dostupné i [v čitelnější podobě](https://hlidacstatu.github.io/verejne-zakazky/VerejneZakazkySchema/index.html).
 
 #### Datová struktura zakázek velkého rozsahu
 Struktura je totožná jako cílová datová struktura, je potřeba "pouze doplnit" chybějící údaje z profilu zadavatele. TODO  
