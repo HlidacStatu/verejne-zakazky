@@ -45,8 +45,8 @@ Stahování dat přímo z profilů zadavatelů je poměrně obtížné, musí se
 
 ## Co dělá Hlídač a co potřebujeme od vás
 
-Hlídač stahuje všechny zakázky velkého rozsahu z VVZ, a ty zpracovává a analyzuje. Ale nepřidává k nim žádné informace (zejména zadávací dokumentaci) z profilu zadavatele.
-Dále Hlídač stahuje data z profilu zadavatelu, mechanicky 1:1 je konvertuje na JSON a ukládá do Elastic serveru.
+Hlídač stahuje všechny zakázky velkého rozsahu z VVZ a ty zpracovává a analyzuje. Ale nepřidává k nim žádné informace (zejména zadávací dokumentaci) z profilu zadavatele.
+Dále Hlídač stahuje data z profilu zadavatelů, mechanicky 1:1 je konvertuje na JSON a ukládá do Elastic serveru.
 
 ### S čím potřebujeme pomoc
 
