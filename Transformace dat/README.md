@@ -92,7 +92,7 @@ Zakázky malého rozsahu jsou získány z XML exportu profilu zadavatele. Hlída
 Popis formátu (adekvátně i JSON struktur) s popisem XML a XSD schémat je možno stáhnout přímo z prohlížeče ve formátu zip z internetové stránky http://www.isvz.cz/ProfilyZadavatelu/Profil_Zadavatele_137_2006_SchemaVZ.zip 
 
 
-### Dostupná API Hlídač Státu
+### Dostupná API Hlídač Státu - !! API budou dostupna od 22.6.
 
 Autorizace je prováděna pomocí autentizačního tokenu, který je Vám přidělen po registraci na HlidacStatu.cz. 
 Autentizační token je nutno odesílat v hlavičce každého požadavku na API.
