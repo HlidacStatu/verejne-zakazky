@@ -2,7 +2,7 @@
   "$schema": "http://json-schema.org/draft-04/schema#",
   "title": "VerejnaZakazka",
   "type": "object",
-  "description": "Struktura verejne zakazky v Hlidaci Statu",
+  "description": "Struktura veřejné zakázky v Hlídači státu",
   "additionalProperties": false,
   "properties": {
     "Id": {
@@ -10,7 +10,7 @@
         "null",
         "string"
       ],
-      "description": "Unikátní ID zakázky. Nevyplňujte, ID vygeneruje Hlídač Státu."
+      "description": "Unikátní ID zakázky. Nevyplňujte, ID vygeneruje Hlídač státu."
     },
     "EvidencniCisloZakazky": {
       "type": [
@@ -24,7 +24,7 @@
         "null",
         "string"
       ],
-      "description": "ID profilu zadavatele, na kterém tato zakázka."
+      "description": "ID profilu zadavatele, na kterém je tato zakázka."
     },
     "Formulare": {
       "type": [
@@ -48,7 +48,7 @@
     },
     "DisplayId": {
       "type": "integer",
-      "description": "Nepouzito",
+      "description": "Nepoužito",
       "format": "int32"
     },
     "Dataset": {
@@ -74,7 +74,7 @@
         "array",
         "null"
       ],
-      "description": "Dodavatele",
+      "description": "Dodavatelé",
       "items": {
         "$ref": "#/definitions/Subject"
       }
@@ -181,7 +181,7 @@
         "null",
         "string"
       ],
-      "description": "Měna odhadovaná hodnoty zakázky."
+      "description": "Měna odhadované hodnoty zakázky."
     },
     "KonecnaHodnotaMena": {
       "type": [
@@ -201,7 +201,7 @@
   "definitions": {
     "Formular": {
       "type": "object",
-      "description": "Formuláře spojené s touto zakázkou. Vychazi z XML na VVZ z www.isvz.cz/ISVZ/MetodickaPodpora/Napovedaopendata.pdf",
+      "description": "Formuláře spojené s touto zakázkou. Vychází z XML na VVZ z www.isvz.cz/ISVZ/MetodickaPodpora/Napovedaopendata.pdf",
       "additionalProperties": false,
       "properties": {
         "Cislo": {
@@ -256,7 +256,7 @@
         },
         "OnlyOnProfile": {
           "type": "boolean",
-          "description": "Je zakazka pouze na profilu zadavatele?"
+          "description": "Je zakázka pouze na profilu zadavatele?"
         }
       }
     },
@@ -300,7 +300,7 @@
             "null",
             "string"
           ],
-          "description": "IC subjektu"
+          "description": "IČ subjektu"
         },
         "Jmeno": {
           "type": [
