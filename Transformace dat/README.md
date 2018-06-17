@@ -4,7 +4,7 @@
 
 Český stát se snaží poskytovat open data týkající se veřejných zakázek, ale moc mu to nejde. Nějaká data poskytuje, ale jsou větsinově neúplná, neobsahují zadávací dokumentaci a velmi často jsou i nevalidní.
 
-**A to bychom chtěli s vaší pomocí změnit**
+**A to bychom chtěli s vaší pomocí změnit.**
 
 Potřebujeme pomoc s dolováním a transformací dat z profilů zadavatelů (co to je, vysvětlujeme dále), doplnění zadávacích dokumentací a to vše transformovat a uložit do finální datové struktury Hlídače státu.
 
