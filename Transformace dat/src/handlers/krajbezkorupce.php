@@ -1,7 +1,7 @@
 <?php
-include_once __DIR__ . "/util.php";
+include_once __DIR__ . "/../util.php";
 
-function krajbezkorupce($result) {
+function krajbezkorupce(stdClass $result) {
 	if (!$result->Dokumenty) {
 		return;
 	}
@@ -11,12 +11,15 @@ function krajbezkorupce($result) {
 	$url = (new DOMXPath($dom))->evaluate("//a[starts-with(@href, 'contract_display')]")->item(0)->getAttribute('href');
 	$url = absoluteUrl($url, $dokument['OficialUrl']);
 	
-	$result->RawHtml = download($url);
-	$dom = parseHtml($result->RawHtml);
+	$html = download($url);
+	$result->RawHtml = "$html\n<!-- Downloaded from $url -->";
+	$dom = parseHtml($html);
 	$xpath = new DOMXPath($dom);
 	
 	// Stručný popis předmětu:<br>$PopisZakazky
 	$result->PopisZakazky = $xpath->evaluate("//p[starts-with(., 'Stručný popis předmětu:')]")->item(0)->childNodes->item(2)->textContent;
+	
+	// TODO: $result->LhutaDoruceni in "Nabídku podat do:" at https://zakazky.krajbezkorupce.cz/contract_display_13341.html or "Datum nákupu / nabídek" at https://zakazky.krajbezkorupce.cz/contract_display_13335.html
 	
 	// Předpokládaná hodnota:<b>$OdhadovanaHodnotaBezDPH $OdhadovanaHodnotaMena bez DPH</b>
 	$predpokladanaHodnota = $xpath->evaluate("//li[starts-with(., 'Předpokládaná hodnota')]/b")->item(0)->textContent;

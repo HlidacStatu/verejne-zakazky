@@ -37,7 +37,7 @@ function absoluteUrl($href, $base) {
  */
 function download($url, $headers = null) {
 	$cache = cachePath($url);
-	if (file_exists($cache)) {
+	if ((!defined('CACHE_READS') || CACHE_READS) && file_exists($cache)) {
 		return file_get_contents($cache);
 	}
 	$context = stream_context_create(array('http' => array('header' => $headers)));
@@ -57,7 +57,7 @@ function download($url, $headers = null) {
  * @return string
  */
 function cachePath($url) {
-	return preg_replace('~^https?://~', __DIR__ . '/../cache/', $url);
+	return preg_replace('~\?~', '^', preg_replace('~^https?://~', __DIR__ . '/../cache/', $url));
 }
 
 /** Downloads URL with caching and parses HTML.
@@ -75,9 +75,21 @@ function downloadHtml($url) {
 function parseHtml($file) {
 	$dom = new DOMDocument;
 	$errors = libxml_use_internal_errors(true);
-	if (!$dom->loadHTML($file)) {
+	if (!$dom->loadHTML('<?xml version="1.0" encoding="utf-8"?>' . $file)) {
 		return false;
 	}
 	libxml_use_internal_errors($errors);
 	return $dom;
+}
+
+/** Returns ISO date from human readable date.
+* @param string
+* @return string Or false for invalid dates.
+*/
+function isoDate($date) {
+	if (preg_match('~^\s*(0?[1-9]|[12][0-9]|3[01])\.(0?[1-9]|1[0-2])\.(\d{4})\s+([01]?\d|2[0-3]):([0-5][0-9])(?::([0-5][0-9]))?\s*$~', $date, $match)) {
+		@list(, $day, $month, $year, $hour, $minute, $second) = $match;
+		return sprintf('%d-%02d-%02dT%02d:%02d:%02d', $year, $month, $day, $hour, $minute, $second);
+	}
+	return false;
 }

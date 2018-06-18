@@ -1,13 +1,15 @@
 #!/usr/bin/env php
 <?php
-include_once __DIR__ . "/src/util.php";
-include_once __DIR__ . "/src/authToken.php";
-include_once __DIR__ . "/src/nipez.php";
-include_once __DIR__ . "/src/krajbezkorupce.php";
+include_once __DIR__ . "/../src/util.php";
+include_once __DIR__ . "/../src/authToken.php";
+include_once __DIR__ . "/../src/handlers/nipez.php";
+include_once __DIR__ . "/../src/handlers/krajbezkorupce.php";
+include_once __DIR__ . "/../src/handlers/vhodneUverejneni.php";
 
 $handlers = array(
 	'nen.nipez.cz' => 'nipez',
 	'zakazky.krajbezkorupce.cz' => 'krajbezkorupce',
+	'www.vhodne-uverejneni.cz' => 'vhodneUverejneni',
 );
 if ($argc > 1) {
 	if ($argc == 2 && isset($handlers[$argv[1]])) {
@@ -21,6 +23,7 @@ if ($argc > 1) {
 $demoUrls = array(
 	'nen.nipez.cz' => 'https://nen.nipez.cz/profil/MVCR/XMLdataVZ?od=12072017&do=12072017',
 	'zakazky.krajbezkorupce.cz' => 'https://zakazky.krajbezkorupce.cz/profile_display_263.html/XMLdataVZ?od=07022018&do=08022018',
+	'www.vhodne-uverejneni.cz' => 'https://www.vhodne-uverejneni.cz/profil/dopravni-podnik-karlovy-vary-a-s/XMLdataVZ?od=18062018&do=18062018',
 );
 
 // Single threaded to not overload servers.
@@ -39,7 +42,7 @@ foreach ($handlers as $server => $handler) {
 		$result->NazevZakazky = $zakazka->VZ->nazev_vz;
 		// 2006: $result->PopisZakazky = $zakazka->VZ->popis;
 		$result->DatumUverejneni = $zakazka->VZ->datum_cas_zverejneni;
-		$result->LhutaDoruceni = $zakazka->VZ->lhuta_pro_podani_nabidek;
+		// 2006: $result->LhutaDoruceni = $zakazka->VZ->lhuta_pro_podani_nabidek;
 		$result->DatumUzavreniSmlouvy = $zakazka->VZ->datum_uzavreni_smlouvy; // 2006: $zakazka->VZ->datum_podpisu
 		// 2006: $result->PosledniZmena = $zakazka->VZ->posledni_zmena;
 		$result->StavVZ = $zakazka->VZ->stav_vz; // TODO: int.
@@ -59,12 +62,14 @@ foreach ($handlers as $server => $handler) {
 			);
 		}
 		
-		$result->Formulare = array(); // TODO: ?
+		// TODO: $result->Formulare = array();
 		
+		/* 2006:
 		$result->Kriteria = array(array(
 			'Nazev' => $zakazka->VZ->zpusob_hodnoceni,
 			// TODO: Popis in $zakazka->VZ->cast_zakazky->zpusob_hodnoceni_textem.
 		));
+		*/
 		
 		$result->Dodavatele = array();
 		foreach ($zakazka->dodavatel as $dodavatel) {
@@ -74,11 +79,13 @@ foreach ($handlers as $server => $handler) {
 			);
 		}
 		
+		/* 2006:
 		$cpv = (array) $zakazka->VZ->vedlejsi_cpv;
 		if ($zakazka->VZ->hlavni_cpv) {
 			array_unshift($cpv, $zakazka->VZ->hlavni_cpv);
 		}
 		$result->CPV = $cpv;
+		*/
 		
 		$result = (array) $result;
 		array_walk_recursive($result, function (&$val, $key) {
