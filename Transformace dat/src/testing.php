@@ -4,10 +4,10 @@
  * @return Subject
  */
 function assertThat($actual) {
-	return new Subject($actual);
+	return new TestingSubject($actual);
 }
 
-class Subject {
+class TestingSubject {
 	private $actual;
 	
 	function __construct($actual) {
