@@ -1,15 +1,22 @@
 #!/usr/bin/env php
 <?php
-include_once __DIR__ . "/../src/util.php";
-include_once __DIR__ . "/../src/authToken.php";
-include_once __DIR__ . "/../src/handlers/nipez.php";
-include_once __DIR__ . "/../src/handlers/krajbezkorupce.php";
-include_once __DIR__ . "/../src/handlers/vhodneUverejneni.php";
+include_once __DIR__ . "/util.php";
+include_once __DIR__ . "/authToken.php";
+include_once __DIR__ . "/handlers/eZakazky.php";
+include_once __DIR__ . "/handlers/krajbezkorupce.php";
+include_once __DIR__ . "/handlers/vhodneUverejneni.php";
 
 $handlers = array(
-	'nen.nipez.cz' => 'nipez',
-	'zakazky.krajbezkorupce.cz' => 'krajbezkorupce',
 	'www.vhodne-uverejneni.cz' => 'vhodneUverejneni',
+	'www.e-zakazky.cz' => 'eZakazky',
+	// www.egordion.cz is not updated to 2016.
+	// www.profilzadavatele.cz is not updated to 2016.
+	'www.stavebnionline.cz' => 'directUrl',
+	'www.tenderarena.cz' => 'directUrl',
+	'nen.nipez.cz' => 'directUrl',
+	'www.kdv.cz' => 'directUrl',
+	'zakazky.krajbezkorupce.cz' => 'krajbezkorupce',
+	// www.profilyzadavatelu.cz redirects to www.tenderarena.cz.
 );
 if ($argc > 1) {
 	if ($argc == 2 && isset($handlers[$argv[1]])) {
@@ -21,9 +28,13 @@ if ($argc > 1) {
 }
 
 $demoUrls = array(
-	'nen.nipez.cz' => 'https://nen.nipez.cz/profil/MVCR/XMLdataVZ?od=12072017&do=12072017',
-	'zakazky.krajbezkorupce.cz' => 'https://zakazky.krajbezkorupce.cz/profile_display_263.html/XMLdataVZ?od=07022018&do=08022018',
 	'www.vhodne-uverejneni.cz' => 'https://www.vhodne-uverejneni.cz/profil/dopravni-podnik-karlovy-vary-a-s/XMLdataVZ?od=18062018&do=18062018',
+	'www.e-zakazky.cz' => 'https://www.e-zakazky.cz/profil-zadavatele/cd02694b-87b6-47bc-8f1b-38c30587962c/XMLdataVZ?od=18062018&do=19062018',
+	'www.stavebnionline.cz' => 'https://stavebnionline.cz/profil/bzenec/XMLdataVZ?od=25082017&do=26082017',
+	'www.tenderarena.cz' => 'https://www.tenderarena.cz/profily/RSD/XMLdataVZ?od=07062018&do=07062018',
+	'nen.nipez.cz' => 'https://nen.nipez.cz/profil/MVCR/XMLdataVZ?od=12072017&do=12072017',
+	'www.kdv.cz' => 'https://www.kdv.cz/profil.php?ic=00303763/XMLdataVZ?od=18062018&do=18062018',
+	'zakazky.krajbezkorupce.cz' => 'https://zakazky.krajbezkorupce.cz/profile_display_263.html/XMLdataVZ?od=07022018&do=08022018',
 );
 
 // Single threaded to not overload servers.
@@ -61,8 +72,6 @@ foreach ($handlers as $server => $handler) {
 				'CisloVerze' => $dokument->cislo_verze,
 			);
 		}
-		
-		// TODO: $result->Formulare = array();
 		
 		/* 2006:
 		$result->Kriteria = array(array(

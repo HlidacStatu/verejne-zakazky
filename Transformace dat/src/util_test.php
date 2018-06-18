@@ -29,6 +29,24 @@ function testIsoDate() {
 	assertThat(isoDate('18.06.2018 18:35'))->isEqualTo($expected);
 	assertThat(isoDate('18.06.2018 18:35:00'))->isEqualTo($expected);
 	assertThat(isoDate('18.6.2018 18:35:00'))->isEqualTo($expected);
+	assertThat(isoDate('   18.6.2018 18:35:00   '))->isEqualTo($expected);
 	assertThat(isoDate('18.6.2018 7:35:00'))->isEqualTo('2018-06-18T07:35:00');
 	assertThat(isoDate('abc'))->isEqualTo(false);
+}
+
+function testPrice() {
+	$expected = array('amount' => 12345, 'currency' => 'Kč');
+	assertThat(price('12 345 Kč'))->isEqualTo($expected);
+	assertThat(price('12 345 Kč'))->isEqualTo($expected); // Non-breaking space.
+	assertThat(price('12 345 Kč bez DPH'))->isEqualTo($expected);
+	assertThat(price('12 344,56 Kč'))->isEqualTo($expected);
+	assertThat(price('   12 345 Kč   '))->isEqualTo($expected);
+}
+
+function testDirectUrl() {
+	$url = 'https://example.com/';
+	$dokument = array('OficialUrl' => $url);
+	$result = (object) array('Dokumenty' => array($dokument));
+	directUrl($result);
+	assertThat($result->Dokumenty[0]['DirectUrl'])->isEqualTo($url);
 }

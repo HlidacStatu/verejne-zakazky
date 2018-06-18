@@ -1,10 +1,10 @@
 #!/usr/bin/env php
 <?php
-foreach (rglob('*_test.php', '../src/') as $filename) {
+foreach (rglob('*_test.php') as $filename) {
 	include __DIR__ . "/$filename";
 }
 
-define("CACHE_READS", false);
+//~ define("CACHE_READS", false);
 
 foreach (get_defined_functions()['user'] as $function) {
 	if (preg_match('~^test~', $function)) {

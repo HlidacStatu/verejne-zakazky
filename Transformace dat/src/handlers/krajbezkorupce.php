@@ -22,10 +22,11 @@ function krajbezkorupce(stdClass $result) {
 	// TODO: $result->LhutaDoruceni in "Nabídku podat do:" at https://zakazky.krajbezkorupce.cz/contract_display_13341.html or "Datum nákupu / nabídek" at https://zakazky.krajbezkorupce.cz/contract_display_13335.html
 	
 	// Předpokládaná hodnota:<b>$OdhadovanaHodnotaBezDPH $OdhadovanaHodnotaMena bez DPH</b>
-	$predpokladanaHodnota = $xpath->evaluate("//li[starts-with(., 'Předpokládaná hodnota')]/b")->item(0)->textContent;
-	if (preg_match('~^\s*([ \d]+) (\w+) bez DPH\s*$~u', $predpokladanaHodnota, $match)) {
-		$result->OdhadovanaHodnotaBezDPH = (int) preg_replace('~ ~', '', $match[1]);
-		$result->OdhadovanaHodnotaMena = $match[2];
+	// TODO: Following <h4>Předpokládaná hodnota</h4> at https://zakazky.krajbezkorupce.cz/contract_display_12345.html
+	$predpokladanaHodnota = price($xpath->evaluate("//li[starts-with(., 'Předpokládaná hodnota')]/b")->item(0)->textContent);
+	if ($predpokladanaHodnota) {
+		$result->OdhadovanaHodnotaBezDPH = $predpokladanaHodnota['amount'];
+		$result->OdhadovanaHodnotaMena = $predpokladanaHodnota['currency'];
 	}
 	
 	$directUrls = array();
@@ -40,4 +41,6 @@ function krajbezkorupce(stdClass $result) {
 		}
 	}
 	unset($dokument);
+	
+	// TODO: $result->Formulare = array();
 }
