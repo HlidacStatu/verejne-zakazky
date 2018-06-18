@@ -1,5 +1,5 @@
 <?php
-include_once __DIR__ . '/testing.php';
+include_once __DIR__ . '/../testing.php';
 include_once __DIR__ . '/nipez.php';
 
 function testNipez() {

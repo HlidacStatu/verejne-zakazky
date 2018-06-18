@@ -19,3 +19,16 @@ function testAbsoluteUrl() {
 	assertThat(absoluteUrl('../d', $base))->isEqualTo('https://example.com/a/d');
 	assertThat(absoluteUrl('../../d/', $base))->isEqualTo('https://example.com/d/');
 }
+
+function testCachePath() {
+	assertThat(cachePath('https://example.com/index?a=b'))->isEqualTo(__DIR__ . '/../cache/example.com/index^a=b');
+}
+
+function testIsoDate() {
+	$expected = '2018-06-18T18:35:00';
+	assertThat(isoDate('18.06.2018 18:35'))->isEqualTo($expected);
+	assertThat(isoDate('18.06.2018 18:35:00'))->isEqualTo($expected);
+	assertThat(isoDate('18.6.2018 18:35:00'))->isEqualTo($expected);
+	assertThat(isoDate('18.6.2018 7:35:00'))->isEqualTo('2018-06-18T07:35:00');
+	assertThat(isoDate('abc'))->isEqualTo(false);
+}
