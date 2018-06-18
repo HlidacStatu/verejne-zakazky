@@ -2,10 +2,11 @@
 <?php
 include_once __DIR__ . "/src/util.php";
 include_once __DIR__ . "/src/authToken.php";
+include_once __DIR__ . "/src/nipez.php";
 include_once __DIR__ . "/src/krajbezkorupce.php";
 
 $handlers = array(
-	'nen.nipez.cz' => function ($zakazka) {},
+	'nen.nipez.cz' => 'nipez',
 	'zakazky.krajbezkorupce.cz' => 'krajbezkorupce',
 );
 if ($argc > 1) {
@@ -36,24 +37,22 @@ foreach ($handlers as $server => $handler) {
 		$result->ZakazkaNaProfiluId = $profil->profil_kod;
 		$result->Zadavatel = $zadavatel;
 		$result->NazevZakazky = $zakazka->VZ->nazev_vz;
-		$result->PopisZakazky = $zakazka->VZ->popis;
+		// 2006: $result->PopisZakazky = $zakazka->VZ->popis;
 		$result->DatumUverejneni = $zakazka->VZ->datum_cas_zverejneni;
 		$result->LhutaDoruceni = $zakazka->VZ->lhuta_pro_podani_nabidek;
-		$result->DatumUzavreniSmlouvy = $zakazka->VZ->datum_podpisu;
-		$result->PosledniZmena = $zakazka->VZ->posledni_zmena;
+		$result->DatumUzavreniSmlouvy = $zakazka->VZ->datum_uzavreni_smlouvy; // 2006: $zakazka->VZ->datum_podpisu
+		// 2006: $result->PosledniZmena = $zakazka->VZ->posledni_zmena;
 		$result->StavVZ = $zakazka->VZ->stav_vz; // TODO: int.
-		$result->OdhadovanaHodnotaBezDPH = $zakazka->VZ->predpokladana_hodnota;
+		// 2006: $result->OdhadovanaHodnotaBezDPH = $zakazka->VZ->predpokladana_hodnota;
+		// 2006: $result->OdhadovanaHodnotaMena = $zakazka->VZ->predpokladana_hodnota['menaKod'];
 		$result->KonecnaHodnotaBezDPH = $zakazka->dodavatel->cena_celkem_dle_smlouvy_bez_DPH; // TODO: Sum?
-		$result->OdhadovanaHodnotaMena = $zakazka->VZ->predpokladana_hodnota['menaKod']; // http://www.sluzby-isvs.cz/isdp/xsd/CoreComponentTypes.xsd
-		$result->KonecnaHodnotaMena = $zakazka->dodavatel->cena_celkem_dle_smlouvy_bez_DPH['menaKod'];
+		$result->KonecnaHodnotaMena = $zakazka->dodavatel->cena_celkem_dle_smlouvy_bez_DPH['menaKod']; // http://www.sluzby-isvs.cz/isdp/xsd/CoreComponentTypes.xsd
 		
 		$result->Dokumenty = array();
 		foreach ($zakazka->VZ->dokument as $dokument) {
-			//~ $url = 'https://zakazky.krajbezkorupce.cz/document_download_66097.html';
-			$url = (string) $dokument->url;
+			$url = $dokument->url;
 			$result->Dokumenty[] = array(
 				'OficialUrl' => $url,
-				'DirectUrl' => $url,
 				'TypDokumentu' => $dokument->typ_dokumentu,
 				'VlozenoNaProfil' => $dokument->cas_vlozeni_na_profil,
 				'CisloVerze' => $dokument->cislo_verze,

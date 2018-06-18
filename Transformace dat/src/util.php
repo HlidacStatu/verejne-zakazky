@@ -65,9 +65,17 @@ function cachePath($url) {
  * @return DOMDocument Or false on failure.
  */
 function downloadHtml($url) {
+	return parseHtml(download($url));
+}
+
+/** Parses HTML.
+ * @param string
+ * @return DOMDocument Or false on failure.
+ */
+function parseHtml($file) {
 	$dom = new DOMDocument;
 	$errors = libxml_use_internal_errors(true);
-	if (!$dom->loadHTML(download($url))) {
+	if (!$dom->loadHTML($file)) {
 		return false;
 	}
 	libxml_use_internal_errors($errors);
