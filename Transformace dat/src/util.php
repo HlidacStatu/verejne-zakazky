@@ -93,3 +93,28 @@ function isoDate($date) {
 	}
 	return false;
 }
+
+/** Returns price and currency from human readable price.
+ * @param string
+ * @return array array('amount' => int, 'currency' => string) or false for invalid prices.
+ */
+function price($price) {
+	if (preg_match('~^\s*([\d  ]+)(?:,(\d\d))?\s+(\w+)~u', $price, $match)) { // Contains non-breaking space.
+		list(, $amount, $decimal, $currency) = $match;
+		return array(
+			'amount' => (int) round(preg_replace('~[  ]~', '', $amount) . ".$decimal"),
+			'currency' => $currency,
+		);
+	}
+	return false;
+}
+
+/** Copy OficialUrl to DirectUrl in all $result->Dokumenty.
+ * @param stdClass Modified.
+ */
+function directUrl(stdClass $result) {
+	foreach ($result->Dokumenty as &$dokument) {
+		$dokument['DirectUrl'] = $dokument['OficialUrl'];
+	}
+	unset($dokument);
+}
