@@ -1,0 +1,582 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterm="http://purl.org/dc/terms/" xmlns:xml="http://www.w3.org/XML/1998/namespace"
+           xmlns="urn:cz:isvz:mmr:schemas:vz-z-profilu-zadavatele:v100" xmlns:cct="urn:cz:isvs:micr:schemas:CoreComponentTypes:v1" xmlns:bus="urn:cz:isvs:micr:schemas:BusinessTypes:v2" xmlns:spa="urn:cz:isvs:micr:schemas:SpaceTypes:v1"
+           xmlns:cmn="urn:cz:isvs:micr:schemas:CommonTypes:v1" xmlns:dep="urn:cz:isvs:micr:schemas:DataElementsTypes:v1" targetNamespace="urn:cz:isvz:mmr:schemas:vz-z-profilu-zadavatele:v100" elementFormDefault="qualified"
+           attributeFormDefault="unqualified" version="1.0.2.00" xmlns:xsd="undefined">
+	<xs:annotation>
+		<xs:documentation xml:lang="cs">Návrh XML schématu zprávy pro získání dat o veřejné zakázce z profilu zadavatele  verze 1.0.2.00</xs:documentation>
+		<xs:appinfo>
+			<rdf:RDF>
+				<rdf:Description rdf:about="urn:cz:isvz:mmr:schemas:vz-z-profilu-zadavatele:v100" xml:lang="cs">
+					<dc:creator>Daniel Němec(nemec@asd-software.cz)</dc:creator>
+					<dc:description>Rozšířené XML schéma zprávy pro získání dat o veřejné zakázce z profilu zadavatele ve verzi 1.0.2.00
+						version="1.0.1.01" - Změna ve struktuře seznamu dokumentů a dodatků VZ
+						version="1.0.1.02" - Doplnění struktury migrace do VZ
+						version="1.0.1.03" - u elementu cena_celkem_dle_smlouvy_bez_DPH opraven popis
+						version="1.0.1.04" - rozsiren seznam podporovanych druhu zadavacich rizeni - element DruhZadavacihoRizeniType
+						version="1.0.2.00" - Schema upraveno dle Vyhlášky o uveřejňování novelizované k roku 2016
+						version="1.0.2.01" - Schema rozšířeno o element migrace, změna datového typu elementu kod_souvisejici_VZ, znepovinění elementu jiny_dokument_nazev, oprava výčtu TypDokumentuType.
+						version="1.0.2.02" - Schema rozšířeno o možnost vložit element any do typu ProfilStructure.
+						version="1.0.2.03" - rozsiren seznam podporovanych druhu zadavacich rizeni - element DruhZadavacihoRizeniType (zavedení DNS v užším řízení, jednací řízení s uveřejněním (bez uveřejnění) - §61 odst. 3, výběr poddodavatele, systém kvalifikace)
+						version="1.0.2.04" - upravena položka ve výčtu TypDokumentuType (výzva k podání nabídek)
+						version="1.0.2.05" - upraven rozsah elementu KodVZNaUsvzisType z původního max.8 znaků na nově max.12 znaků
+					</dc:description>
+					<dc:identifier/>
+					<dc:publisher>Ministerstvo pro místní rozvoj ČR</dc:publisher>
+					<dc:rights></dc:rights>
+					<dc:source/>
+					<dc:type>XML Schema</dc:type>
+					<dcterm:created>2014-03-18</dcterm:created>
+					<dcterm:valid/>
+					<dc:subject>VZ request</dc:subject>
+					<dc:format>text/xml</dc:format>
+				</rdf:Description>
+			</rdf:RDF>
+		</xs:appinfo>
+	</xs:annotation>
+	<xs:import namespace="urn:cz:isvs:micr:schemas:CommonTypes:v1" schemaLocation="http://www.sluzby-isvs.cz/isdp/xsd/isvs_common.xsd"/>
+	<xs:import namespace="urn:cz:isvs:micr:schemas:CoreComponentTypes:v1" schemaLocation="http://www.sluzby-isvs.cz/isdp/xsd/CoreComponentTypes.xsd"/>
+	<xs:import namespace="urn:cz:isvs:micr:schemas:BusinessTypes:v2" schemaLocation="http://www.sluzby-isvs.cz/isdp/xsd/isvs_business.xsd"/>
+	<xs:import namespace="urn:cz:isvs:micr:schemas:SpaceTypes:v1" schemaLocation="http://www.sluzby-isvs.cz/isdp/xsd/isvs_space.xsd"/>
+	<xs:import namespace="urn:cz:isvs:micr:schemas:DataElementsTypes:v1" schemaLocation="http://www.sluzby-isvs.cz/isdp/xsd/isvs_dp.xsd"/>
+	<xs:element name="profil" type="ProfilStructure"/>
+	<xs:complexType name="ProfilStructure">
+		<xs:annotation>
+			<xs:documentation>Kořenová struktura pro předání seznamu VZ z profilu zadavatele</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="profil_kod" type="ProfilKodType"/>
+			<xs:element name="zadavatel" type="ZadavatelStructure"/>
+			<xs:element name="zakazka" type="ZakazkaStructure" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:any namespace="##other" maxOccurs="unbounded" minOccurs="0" processContents="skip"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="UcastnikZRStructure">
+		<xs:annotation>
+			<xs:documentation>Struktura pro předání základních informacích o účastníkovi zadávacího řízení</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="ico" type="IcoType" minOccurs="0"/>
+			<xs:element name="nazev_ucastnika" type="bus:SubjektObchodniJmenoType">
+				<xs:annotation>
+					<xs:documentation xml:lang="cz">Název nebo obchodní firma účastníka ZŘ v případě právnické osoby/ jméno, příjmení účastníka ZŘ v případě fyzické osoby</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:choice>
+				<xs:element name="zeme_sidla" type="spa:StatKodType" minOccurs="0"/>
+				<xs:element name="misto_podnikani" type="spa:StatKodType" minOccurs="0"/>
+				<xs:element name="bydliste" type="spa:StatKodType" minOccurs="0"/>
+			</xs:choice>
+			<xs:element name="cena_bez_dph" type="cct:CenaType">
+				<xs:annotation>
+					<xs:documentation xml:lang="cz">Nabídková cena bez DPH.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="cena_s_dph" type="cct:CenaType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="cz">Nabídková cena účastníka ZŘ s DPH</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="sdruzeni" type="dep:DatovyPrvekJednoduchyTypIndikatorType" minOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Účastník ZŘ je sdružením dodavatelů (identifikován je pak vedoucí účastník).</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="vedouci_ucastnik_ico" type="IcoType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="cz">IČO vedoucího účastníka.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="vyrazen_mim_cena" minOccurs="0" type="cct:IndikatorType">
+				<xs:annotation>
+					<xs:documentation>Údaj, že nabídka účastníka zadávacího řízení byla vyřazena pro mimořádně nízkou nabídkovou cenu a důvody tohoto rozhodnutí.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="vyrazen_mim_cena_zduvodneni" type="PoznamkaType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Důvody vyřazení pro mimořádně nízkou nabídkovou cenu.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="odstoupil" minOccurs="0" type="dep:DatovyPrvekJednoduchyTypIndikatorType">
+				<xs:annotation>
+					<xs:documentation>Údaj, že účastník zadávacího řízení ze zadávacího řízení odstoupil nebo odmítl uzavřít smlouvu nebo neposkytl zadavateli potřebnou součinnost a důvody tohoto jednání účastníka, jsou-li zadavateli známy.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="odstoupil_zduvodneni" type="PoznamkaType" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Zdůvodnění odstoupení.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ZakazkaStructure">
+		<xs:sequence>
+			<xs:annotation>
+				<xs:documentation>Seznam všech dílčích veřejných zakázek evidovaných na profilu zadavatele. Rozsah seznamu je dán parametry samotného dotazu ze strany IS VZ</xs:documentation>
+			</xs:annotation>
+			<xs:element name="VZ" type="VZStructure" maxOccurs="1"/>
+			<xs:element name="ucastnik" type="UcastnikZRStructure" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="dodavatel" type="DodavatelStructure" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ProfilKodType">
+		<xs:annotation>
+			<xs:documentation>Identifikátor profilu zadavatele
+				- jedná se o evidenční číslo profilu zadavatele ve Věstníku veřejných zakázek přidělené na základě Oznámení profilu zadavatele</xs:documentation>
+		</xs:annotation>
+		<xs:simpleContent>
+			<xs:restriction base="cct:IdentifikatorType">
+				<xs:minLength value="1"/>
+				<xs:maxLength value="20"/>
+			</xs:restriction>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:complexType name="VZStructure">
+		<xs:sequence>
+			<xs:annotation>
+				<xs:documentation>Základní informace charakterizující konkrétní zakázku</xs:documentation>
+			</xs:annotation>
+			<xs:element name="kod_vz_na_profilu" type="KodVzNaProfiluType">
+				<xs:annotation>
+					<xs:documentation xml:lang="cz">Jednoznačný identifikátor veřejné zakázky evidované na profilu zadavatele odpovídající struktuře PrrVnnnnnnnn, kde:
+						„P“ specifikuje, že se jedná o veřejnou zakázku uveřejněnou na profilu zadavatele
+						„rr“ specifikuje poslední dvojčíslí letopočtu
+						„V“ specifikuje, že se jedná o veřejnou zakázku
+						„nnnnnnnn“ udává osmimístné pořadové číslo veřejné zakázky přidělené zadavatelem v příslušném roce</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="kod_souvisejici_VZ" type="KodVzNaProfiluType" minOccurs="0"/>
+			<xs:element name="kod_vz_na_vvz" type="KodVZNaUsvzisType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="cz">Evidenční číslo veřejné zakázky ve Věstníku veřejných zakázek - uvádí se, je-li veřejná zakázka uveřejněna ve Věstníku veřejných zakázek</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="nazev_vz" type="NazevVZType"/>
+			<xs:element name="stav_vz" type="StavVZType"/>
+			<xs:element name="druh_zadavaciho_rizeni" type="DruhZadavacihoRizeniType"/>
+			<xs:element name="delena_na_casti" type="dep:DatovyPrvekJednoduchyTypIndikatorType">
+				<xs:annotation>
+					<xs:documentation>Jedná se o veřejnou zakázku dělenou na části (ano/ne).</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="ramcova_dohoda" type="dep:DatovyPrvekJednoduchyTypIndikatorType" minOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Jedná se o rámcovou dohodu</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="zavedeni_dns" type="dep:DatovyPrvekJednoduchyTypIndikatorType" minOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Jedná se o zavedení DNS</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="dokument" type="DokumentVzStructure" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>Seznam dokumentů VZ.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="datum_cas_zverejneni" type="cct:DatumCasType" minOccurs="1">
+				<xs:annotation>
+					<xs:documentation xml:lang="cz">Čas zveřejnění - uvádí se datum včetně hodiny a minuty zpřístupnění VZ na profilu</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="datum_uzavreni_smlouvy" type="cct:DatumCasType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Datum uzavření smlouvy (pokud byla VZ zadána).</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="datum_zruseni" type="cct:DatumCasType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Datum zrušení VZ (pokud byla VZ zrušena).</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="cast_zakazky" type="CastVzStructure" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element type="MigraceStructure" name="migrace" maxOccurs="unbounded" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="RozpadStructure">
+		<xs:sequence>
+			<xs:annotation>
+				<xs:documentation>Specifikuje cenový rozpad ceny díla v jednotlivých letech pro uvedeného dodavatele</xs:documentation>
+			</xs:annotation>
+			<xs:element name="rok_smlouvy" type="cct:PocetType" minOccurs="0"/>
+			<xs:element name="cena_za_rok_bez_dph" type="cct:CenaType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="cz">Skutečně uhrazená cena bez DPH v jednotlivých letech plnění – uvádí veřejný zadavatel, pokud došlo k realizaci veřejné zakázky</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="cena_za_rok_s_dph" type="cct:CenaType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="cz">Skutečně uhrazená cena s DPH v jednotlivých letech plnění - uvádí veřejný zadavatel, pokud došlo k realizaci veřejné zakázky</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="KodVzNaProfiluType">
+		<xs:annotation>
+			<xs:documentation>Identifikátor VZ na profilu zadavatele</xs:documentation>
+		</xs:annotation>
+		<xs:simpleContent>
+			<xs:restriction base="cct:IdentifikatorType">
+				<xs:minLength value="6"/>
+				<xs:maxLength value="12"/>
+			</xs:restriction>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:complexType name="KodVZNaUsvzisType">
+		<xs:annotation>
+			<xs:documentation>Evidenční číslo veřejné zakázky ve Věstníku veřejných zakázek</xs:documentation>
+		</xs:annotation>
+		<xs:simpleContent>
+			<xs:restriction base="cct:IdentifikatorType">
+				<xs:minLength value="1"/>
+				<xs:maxLength value="12"/>
+			</xs:restriction>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:complexType name="NazevVZType">
+		<xs:annotation>
+			<xs:documentation>Název VZ</xs:documentation>
+		</xs:annotation>
+		<xs:simpleContent>
+			<xs:restriction base="cct:TextType">
+				<xs:minLength value="1"/>
+				<xs:maxLength value="255"/>
+			</xs:restriction>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:complexType name="StavVZType">
+		<xs:annotation>
+			<xs:documentation>Stav VZ</xs:documentation>
+		</xs:annotation>
+		<xs:simpleContent>
+			<xs:restriction base="cct:KodType">
+				<xs:enumeration value="zakázka neukončena">
+					<xs:annotation>
+						<xs:documentation xml:lang="cz">zakázka neukončena – informace o zakázce byly uveřejněny na profilu zadavatele, běží lhůta pro podání nabídek nebo probíhá hodnocení nabídek</xs:documentation>
+					</xs:annotation>
+				</xs:enumeration>
+				<xs:enumeration value="zakázka byla zadána">
+					<xs:annotation>
+						<xs:documentation xml:lang="cz">zakázka byla zadána - byla uzavřena smlouva s dodavatelem</xs:documentation>
+					</xs:annotation>
+				</xs:enumeration>
+				<xs:enumeration value="zakázka byla zrušena">
+					<xs:annotation>
+						<xs:documentation xml:lang="cz">zakázka byla zrušena</xs:documentation>
+					</xs:annotation>
+				</xs:enumeration>
+				<xs:enumeration value="ukončeno plnění smlouvy na základě veřejné zakázky">
+					<xs:annotation>
+						<xs:documentation xml:lang="cz">ukončeno plnění smlouvy na základě veřejné zakázky</xs:documentation>
+					</xs:annotation>
+				</xs:enumeration>
+			</xs:restriction>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:complexType name="DruhZadavacihoRizeniType">
+		<xs:annotation>
+			<xs:documentation>Druh zadávacího řízení. Specifikace zadávacího řízení, která odpovídá v souladu s XML schématy uveřejněnými na internetových stránkách Informačního systému o veřejných zakázkách jedné z možných hodnot.</xs:documentation>
+		</xs:annotation>
+		<xs:simpleContent>
+			<xs:restriction base="cct:KodType">
+				<xs:enumeration value="otevřené řízení">
+					<xs:annotation>
+						<xs:documentation xml:lang="cz">otevřené řízení</xs:documentation>
+					</xs:annotation>
+				</xs:enumeration>
+				<xs:enumeration value="užší řízení">
+					<xs:annotation>
+						<xs:documentation xml:lang="cz">užší řízení</xs:documentation>
+					</xs:annotation>
+				</xs:enumeration>
+				<xs:enumeration value="jednací řízení s uveřejněním">
+					<xs:annotation>
+						<xs:documentation xml:lang="cz">jednací řízení s uveřejněním</xs:documentation>
+					</xs:annotation>
+				</xs:enumeration>
+				<xs:enumeration value="jednací řízení bez uveřejnění">
+					<xs:annotation>
+						<xs:documentation xml:lang="cz">jednací řízení bez uveřejnění</xs:documentation>
+					</xs:annotation>
+				</xs:enumeration>
+				<xs:enumeration value="soutěžní dialog">
+					<xs:annotation>
+						<xs:documentation xml:lang="cz">soutěžní dialog</xs:documentation>
+					</xs:annotation>
+				</xs:enumeration>
+				<xs:enumeration value="řízení o inovačním partnerství">
+					<xs:annotation>
+						<xs:documentation xml:lang="cz">řízení o inovačním partnerství</xs:documentation>
+					</xs:annotation>
+				</xs:enumeration>
+				<xs:enumeration value="zjednodušený režim">
+					<xs:annotation>
+						<xs:documentation xml:lang="cz">zjednodušený režim</xs:documentation>
+					</xs:annotation>
+				</xs:enumeration>
+				<xs:enumeration value="zjednodušené podlimitní řízení">
+					<xs:annotation>
+						<xs:documentation xml:lang="cz">zjednodušené podlimitní řízení</xs:documentation>
+					</xs:annotation>
+				</xs:enumeration>
+				<xs:enumeration value="koncesní řízení">
+					<xs:annotation>
+						<xs:documentation xml:lang="cz">koncesní řízení</xs:documentation>
+					</xs:annotation>
+				</xs:enumeration>
+				<xs:enumeration value="soutěž o návrh">
+					<xs:annotation>
+						<xs:documentation xml:lang="cz">soutěž o návrh</xs:documentation>
+					</xs:annotation>
+				</xs:enumeration>
+				<xs:enumeration value="zakázka malého rozsahu">
+					<xs:annotation>
+						<xs:documentation xml:lang="cz">zakázka malého rozsahu</xs:documentation>
+					</xs:annotation>
+				</xs:enumeration>
+				<xs:enumeration value="zakázka zadaná na základě výjimky">
+					<xs:annotation>
+						<xs:documentation xml:lang="cz">zakázka zadaná na základě výjimky</xs:documentation>
+					</xs:annotation>
+				</xs:enumeration>
+				<xs:enumeration value="minitendr (zadání na základě rámcové dohody)">
+					<xs:annotation>
+						<xs:documentation xml:lang="cz">minitendr (zadání na základě rámcové dohody)</xs:documentation>
+					</xs:annotation>
+				</xs:enumeration>
+				<xs:enumeration value="nákup v dynamickém nákupním systému">
+					<xs:annotation>
+						<xs:documentation xml:lang="cz">nákup v dynamickém nákupním systému</xs:documentation>
+					</xs:annotation>
+				</xs:enumeration>
+				<xs:enumeration value="zavedení DNS v užším řízení"/>
+				<xs:enumeration value="jednací řízení s uveřejněním (bez uveřejnění) - §61 odst. 3"/>
+				<xs:enumeration value="výběr poddodavatele"/>
+				<xs:enumeration value="systém kvalifikace"/>
+			</xs:restriction>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:complexType name="DodavatelStructure">
+		<xs:sequence>
+			<xs:annotation>
+				<xs:documentation>Struktura pro předání informací o vybraném dodavateli</xs:documentation>
+			</xs:annotation>
+			<xs:element name="ico" type="IcoType" minOccurs="0"/>
+			<xs:element name="nazev_dodavatele" type="bus:SubjektObchodniJmenoType">
+				<xs:annotation>
+					<xs:documentation xml:lang="cz">Název nebo obchodní firma vybraného dodavatele v případě právnické osoby/ jméno, příjmení vybraného dodavatele v případě fyzické osoby</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:choice>
+				<xs:element name="zeme_sidla_dodavatele" type="spa:StatKodType" minOccurs="0"/>
+				<xs:element name="misto_podnikani_dodavatele" type="spa:StatKodType" minOccurs="0"/>
+				<xs:element name="bydliste_dodavatele" type="spa:StatKodType" minOccurs="0"/>
+			</xs:choice>
+			<xs:element name="cena_celkem_dle_smlouvy_DPH" type="cct:CenaType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="cz">Celková cena dle smlouvy s DPH – uvádí veřejný zadavatel, pokud byla smlouva uzavřena</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="cena_celkem_dle_smlouvy_bez_DPH" type="cct:CenaType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="cz">Celková cena dle smlouvy bez DPH – uvádí veřejný zadavatel, pokud byla smlouva uzavřena</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="sdruzeni_dodavatelu" type="dep:DatovyPrvekJednoduchyTypIndikatorType">
+				<xs:annotation>
+					<xs:documentation xml:lang="cz">Vybraný dodavatel je sdružením dodavatelů - uvádí se příznakem ano/ne včetně identifikace vedoucího účastníka pomocí IČO</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="vedouci_dodavatel_ico" type="IcoType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="cz">IČO vedoucího účastníka.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="rozpad" type="RozpadStructure" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ZadavatelStructure">
+		<xs:sequence>
+			<xs:annotation>
+				<xs:documentation>Identifikace zadavatele VZ</xs:documentation>
+			</xs:annotation>
+			<xs:element name="nazev_zadavatele" type="bus:SubjektObchodniJmenoType"/>
+			<xs:element name="ico_vlastni" type="IcoType" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="IcoType">
+		<xs:annotation>
+			<xs:documentation>
+			</xs:documentation>
+		</xs:annotation>
+		<xs:simpleContent>
+			<xs:restriction base="cct:TextType">
+				<xs:maxLength value="10"/>
+			</xs:restriction>
+		</xs:simpleContent>
+	</xs:complexType>
+
+	<xs:complexType name="PoznamkaType">
+		<xs:annotation>
+			<xs:documentation>Obecný datový typ pro poznámku VZ do rozsahu 1024 znaků</xs:documentation>
+		</xs:annotation>
+		<xs:simpleContent>
+			<xs:restriction base="cct:TextType">
+				<xs:maxLength value="1024"/>
+				<xs:minLength value="1"/>
+			</xs:restriction>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:complexType name="DokumentVzStructure">
+		<xs:sequence>
+			<xs:annotation>
+				<xs:documentation>
+				</xs:documentation>
+			</xs:annotation>
+			<xs:element name="url" type="cmn:URLType" minOccurs="1">
+				<xs:annotation>
+					<xs:documentation xml:lang="cz">URL, na které je dokument umístěn</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="typ_dokumentu" type="TypDokumentuType" minOccurs="1"/>
+			<xs:element name="cas_vlozeni_na_profil" type="cct:DatumCasType" minOccurs="1">
+				<xs:annotation>
+					<xs:documentation xml:lang="cz">Datum a čas vložení této verze dokumentu na profil</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="jiny_dokument_nazev" type="NazevType" minOccurs="0"/>
+			<xs:element name="cislo_verze" type="cct:PocetType" minOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="TypDokumentuType">
+		<xs:annotation>
+			<xs:documentation>Typ dokumentu</xs:documentation>
+		</xs:annotation>
+		<xs:simpleContent>
+			<xs:restriction base="cct:KodType">
+				<xs:enumeration value="Zadávací dokumentace (podle § 53 odstavce 3, § 96 odstavce 1 a § 164 odstavce 2 zákona)">
+					<xs:annotation>
+						<xs:documentation xml:lang="cz">Zadávací dokumentace (podle § 53 odstavce 3, § 96 odstavce 1 a § 164 odstavce 2 zákona)</xs:documentation>
+					</xs:annotation>
+				</xs:enumeration>
+				<xs:enumeration value="Výzva k podání nabídek">
+					<xs:annotation>
+						<xs:documentation xml:lang="cz">Výzva k podání nabídek (ve zjednodušeném podlimitním řízení podle § 53 odstavce 1 zákona)</xs:documentation>
+					</xs:annotation>
+				</xs:enumeration>
+				<xs:enumeration value="Vysvětlení zadávací dokumentace (podle § 98 zákona)">
+					<xs:annotation>
+						<xs:documentation xml:lang="cz">Vysvětlení zadávací dokumentace (podle § 98 zákona)</xs:documentation>
+					</xs:annotation>
+				</xs:enumeration>
+				<xs:enumeration value="Písemná zpráva (podle § 217 zákona)">
+					<xs:annotation>
+						<xs:documentation xml:lang="cz">Písemná zpráva (podle § 217 zákona)</xs:documentation>
+					</xs:annotation>
+				</xs:enumeration>
+				<xs:enumeration value="Smlouva (uzavřená na veřejnou zakázku včetně všech jejích změn a dodatků a rámcová dohoda podle § 219 zákona)">
+					<xs:annotation>
+						<xs:documentation xml:lang="cz">Smlouva (uzavřená na veřejnou zakázku včetně všech jejích změn a dodatků a rámcová dohoda podle § 219 zákona)</xs:documentation>
+					</xs:annotation>
+				</xs:enumeration>
+				<xs:enumeration value="Jiný dokument (zadavatel uvede název tohoto typu dokumentu)">
+					<xs:annotation>
+						<xs:documentation xml:lang="cz">Jiný dokument (zadavatel uvede název tohoto typu dokumentu)</xs:documentation>
+					</xs:annotation>
+				</xs:enumeration>
+			</xs:restriction>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:complexType name="NazevType">
+		<xs:annotation>
+			<xs:documentation>Název</xs:documentation>
+		</xs:annotation>
+		<xs:simpleContent>
+			<xs:restriction base="cct:TextType">
+				<xs:minLength value="1"/>
+				<xs:maxLength value="255"/>
+			</xs:restriction>
+		</xs:simpleContent>
+	</xs:complexType>
+
+	<xs:complexType name="CastVzStructure">
+		<xs:sequence>
+			<xs:annotation>
+				<xs:documentation>
+				</xs:documentation>
+			</xs:annotation>
+			<xs:element name="cislo_casti" type="cct:KodType" minOccurs="1">
+				<xs:annotation>
+					<xs:documentation xml:lang="cz">Číslo části - části VZ jsou značeny souvislou řadou začínající číslem 1</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="nazev_casti_vz" type="NazevType" minOccurs="1"/>
+			<xs:element name="stav" type="StavCastiVzType" minOccurs="1"/>
+			<xs:element name="ucastnik" type="UcastnikZRStructure" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="dodavatel" type="DodavatelStructure" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="datum_uzavreni_smlouvy" type="cct:DatumCasType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="cz">Datum uzavření smlouvy (pokud byla část VZ zadána).</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="datum_zruseni" type="cct:DatumCasType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="cz">Datum zrušení části VZ</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="StavCastiVzType">
+		<xs:annotation>
+			<xs:documentation>
+			</xs:documentation>
+		</xs:annotation>
+		<xs:simpleContent>
+			<xs:restriction base="cct:KodType">
+				<xs:enumeration value="část zakázky neukončena">
+					<xs:annotation>
+						<xs:documentation xml:lang="cz">část zakázky neukončena</xs:documentation>
+					</xs:annotation>
+				</xs:enumeration>
+				<xs:enumeration value="část VZ byla zadána">
+					<xs:annotation>
+						<xs:documentation xml:lang="cz">Část VZ byla zadána - byla uzavřena smlouva s dodavatelem</xs:documentation>
+					</xs:annotation>
+				</xs:enumeration>
+				<xs:enumeration value="část VZ byla zrušena">
+					<xs:annotation>
+						<xs:documentation xml:lang="cz">Část VZ byla zrušena</xs:documentation>
+					</xs:annotation>
+				</xs:enumeration>
+				<xs:enumeration value="ukončeno plnění smlouvy části VZ">
+					<xs:annotation>
+						<xs:documentation xml:lang="cz">Ukončeno plnění smlouvy části VZ</xs:documentation>
+					</xs:annotation>
+				</xs:enumeration>
+			</xs:restriction>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:complexType name="MigraceStructure">
+		<xs:sequence>
+			<xs:annotation>
+				<xs:documentation>Uvádí se administrativní údaje k identifikaci původního profilu zadavatele v případě, že původní VZ je přečíslována na novém profilu.</xs:documentation>
+			</xs:annotation>
+			<xs:element name="kod_vz_na_profilu_puvodni" type="KodVzNaProfiluType">
+				<xs:annotation>
+					<xs:documentation xml:lang="cz">Identifikace původní VZ - uvádí se evidenční číslo VZ na původním profilu
+						Jednoznačný identifikátor veřejné zakázky evidované na profilu zadavatele odpovídající struktuře PrrVnnnnnnnn, kde:
+						„P“ specifikuje, že se jedná o veřejnou zakázku uveřejněnou na profilu zadavatele
+						„rr“ specifikuje poslední dvojčíslí letopočtu
+						„V“ specifikuje, že se jedná o veřejnou zakázku
+						„nnnnnnnn“ udává osmimístné pořadové číslo veřejné zakázky přidělené zadavatelem v příslušném roce</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="profil_kod_puvodni" type="ProfilKodType">
+				<xs:annotation>
+					<xs:documentation xml:lang="cz">Identifikace původního profilu - uvádí se původním kód profilu</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>
