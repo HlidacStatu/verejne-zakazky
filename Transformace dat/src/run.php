@@ -1,7 +1,6 @@
 #!/usr/bin/env php
 <?php
 include_once __DIR__ . "/util.php";
-include_once __DIR__ . "/authToken.php";
 include_once __DIR__ . "/handlers/eZakazky.php";
 include_once __DIR__ . "/handlers/krajbezkorupce.php";
 include_once __DIR__ . "/handlers/vhodneUverejneni.php";
@@ -26,6 +25,12 @@ if ($argc > 1) {
 		exit(1);
 	}
 }
+
+if (!file_exists(__DIR__ . '/authToken.txt')) {
+	echo "Get your auth token at https://www.hlidacstatu.cz/api/ and save it to authToken.txt.\n";
+	exit(1);
+}
+define('AUTH_TOKEN', rtrim(file_get_contents(__DIR__ . '/authToken.txt')));
 
 $demoUrls = array(
 	'www.vhodne-uverejneni.cz' => 'https://www.vhodne-uverejneni.cz/profil/dopravni-podnik-karlovy-vary-a-s/XMLdataVZ?od=18062018&do=18062018',
