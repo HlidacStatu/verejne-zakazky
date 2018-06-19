@@ -40,7 +40,10 @@ function download($url, $headers = null) {
 	if ((!defined('CACHE_READS') || CACHE_READS) && file_exists($cache)) {
 		return file_get_contents($cache);
 	}
-	$context = stream_context_create(array('http' => array('header' => $headers)));
+	$context = stream_context_create(array('http' => array(
+		'header' => $headers,
+		'user_agent' => 'HlidacStatu/verejne-zakazky (https://github.com/HlidacStatu/verejne-zakazky)',
+	)));
 	$file = file_get_contents($url, false, $context);
 	if ($file) {
 		$dir = dirname($cache);
