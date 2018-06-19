@@ -60,7 +60,11 @@ function download($url, $headers = null) {
  * @return string
  */
 function cachePath($url) {
-	return preg_replace('~\?~', '^', preg_replace('~^https?://~', __DIR__ . '/../cache/', $url));
+	$return = $url;
+	$return = preg_replace('~#.*~', '', $return);
+	$return = preg_replace('~\?~', '^', $return); // Not allowed on Windows.
+	$return = preg_replace('~^https?://~', __DIR__ . '/../cache/', $return);
+	return $return;
 }
 
 /** Downloads URL with caching and parses HTML.

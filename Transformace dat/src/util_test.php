@@ -21,7 +21,7 @@ function testAbsoluteUrl() {
 }
 
 function testCachePath() {
-	assertThat(cachePath('https://example.com/index?a=b'))->isEqualTo(__DIR__ . '/../cache/example.com/index^a=b');
+	assertThat(cachePath('https://example.com/index?a=b#c'))->isEqualTo(__DIR__ . '/../cache/example.com/index^a=b');
 }
 
 function testIsoDate() {
