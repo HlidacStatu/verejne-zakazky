@@ -56,16 +56,16 @@ Nejvíce profilů je na doménách (k 15.6.2018):
 
 Doména | počet profilů
 ------ | --------------
-www.vhodne-uverejneni.cz | 5983
-www.e-zakazky.cz | 1605
-www.egordion.cz | 1061
-www.profilzadavatele.cz | 608
-www.stavebnionline.cz | 572
-www.tenderarena.cz | 463
-nen.nipez.cz | 300
-www.kdv.cz | 296
+[www.vhodne-uverejneni.cz](https://www.vhodne-uverejneni.cz/zakazka/zs-frymburk-vybaveni-uceben) | 5983
+[www.e-zakazky.cz](https://www.e-zakazky.cz/profil-zadavatele/73e0befb-9f53-448c-b748-1f034c285e4c/zakazka/P18V00000065) | 1605
+[www.egordion.cz](https://www.egordion.cz/nabidkaGORDION/zakazka.seam?cid=82175) | 1061
+[www.profilzadavatele.cz](https://www.profilzadavatele.cz/profil-zadavatele/obec-nesovice_4470/moderni-detske-hriste-zazemi-bez-urazu_18939/) | 608
+[www.stavebnionline.cz](https://stavebnionline.cz/Profily/profil.asp?Typ=2&ID=265&IDZak=8037) | 572
+[www.tenderarena.cz](https://www.tenderarena.cz/profil/zakazka/detail.jsf?id=189687) | 463
+[nen.nipez.cz](https://nen.nipez.cz/ZakladniInformaceOZadavacimPostupu-390252495-310920815/) | 300
+[www.kdv.cz](https://www.kdv.cz/pza_zakazka.php?ic=00288683&id=3480) | 296
 www.profilyzadavatelu.cz | 258
-zakazky.krajbezkorupce.cz | 239
+[zakazky.krajbezkorupce.cz](https://zakazky.krajbezkorupce.cz/contract_display_14425.html) | 239
 zakazky.kr-stredocesky.cz | 173
 www.softender.cz | 161
 uverejnovani.cz | 145
@@ -90,10 +90,10 @@ Struktura je totožná jako cílová datová struktura, je potřeba "pouze dopln
 
 #### Datová struktura zakázek malého rozsahu
 Zakázky malého rozsahu jsou získány z XML exportu profilu zadavatele. Hlídač státu toto XML 1:1 bez jakýchkoliv úprav konvertuje do JSON. 
-Popis formátu (adekvátně i JSON struktur) s popisem XML a XSD schémat je možno stáhnout přímo z prohlížeče ve formátu zip z internetové stránky http://www.isvz.cz/ProfilyZadavatelu/Profil_Zadavatele_134_2016_SchemaVZ.zip 
+Popis formátu (adekvátně i JSON struktur) s popisem XML a XSD schémat je možno stáhnout přímo z prohlížeče ve formátu zip z internetové stránky http://www.isvz.cz/ProfilyZadavatelu/Profil_Zadavatele_134_2016_SchemaVZ.zip ([rozbalené](Profil_Zadavatele_134_2016_SchemaVZ.xsd)).
 
 
-### Dostupná API Hlídač Státu - !! API budou dostupna od 22.6.
+### Dostupná API Hlídače státu - !! API budou dostupná od 22.6.
 
 Autorizace je prováděna pomocí autentizačního tokenu, který je vám přidělen po registraci na HlidacStatu.cz. 
 Autentizační token je nutno odesílat v hlavičce každého požadavku na API.
