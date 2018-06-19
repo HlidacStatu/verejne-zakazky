@@ -1,7 +1,7 @@
 <?php
 /** Asserts that...
  * @param mixed
- * @return Subject
+ * @return TestingSubject
  */
 function assertThat($actual) {
 	return new TestingSubject($actual);
