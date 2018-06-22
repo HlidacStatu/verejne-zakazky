@@ -107,7 +107,7 @@ Zakázky malého rozsahu jsou Hlídačem státu stáhnuty a zkonvertovány do JS
 
 1. Získat další zakázku malého rozsahu, která nebyla zpracována, z domény určené parametrem:
   `curl -X GET https://www.hlidacstatu.cz/Api/v1/VZProfilesList -H 'Authorization: Token XYZABCD'`
-  API vrátí pole 250 profilů zadavatelů (id, URL profilu a pocet nezpracovanych zakazek), seřazených podle počtu nezpracovaných zakázek.
+  API vrátí pole 250 profilů zadavatelů (id, URL profilu a počet nezpracovaných zakázek), seřazených podle počtu nezpracovaných zakázek.
 
 2. Získat zakázky z profilu
   `curl -X GET https://www.hlidacstatu.cz/Api/v1/VZList/<id profilu zadavatele> -H 'Authorization: Token XYZABCD'`
@@ -120,13 +120,13 @@ Vrátí 50 zakázek (plné záznamy), ze seznamu dosud nezpracovaných zakázek 
 
 4. Převést zakázku do cílové datové struktury včetně URL na samotné soubory se zadávací dokumentací. Popisné atributy dokumentů je nutné také převést.
 
-5. Poslat jednu transformovanou zakázku v cílové datové strukturě na Hlídač státu 
+5. Poslat jednu transformovanou zakázku v cílové datové strukturě na Hlídač státu
   `curl -X POST https://www.hlidacstatu.cz/Api/v1/VZDetail?id=<id zakazky> -H 'Authorization: Token XYZABCD'
        -d '{... json ...}'
   `
   *Toto API bude dostupné během 23.6.2018*
   
-6. a takto pro  další zakázky ze seznamu zakázek získaných v 2.
+6. A takto pro  další zakázky ze seznamu zakázek získaných v 2.
 
 Můžete volat API multithreadově, prosíme však o přiměřenou zátěž.
 
