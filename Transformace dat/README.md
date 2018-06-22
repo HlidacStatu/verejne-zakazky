@@ -93,7 +93,7 @@ Zakázky malého rozsahu jsou získány z XML exportu profilu zadavatele. Hlída
 Popis formátu (adekvátně i JSON struktur) s popisem XML a XSD schémat je možno stáhnout přímo z prohlížeče ve formátu zip z internetové stránky http://www.isvz.cz/ProfilyZadavatelu/Profil_Zadavatele_134_2016_SchemaVZ.zip ([rozbalené](Profil_Zadavatele_134_2016_SchemaVZ.xsd)).
 
 
-### Dostupná API Hlídače státu - !! API budou dostupná od 24.6. (sorry za posunuti).
+### Dostupná API Hlídače státu - !! již dostupná
 
 Autorizace je prováděna pomocí autentizačního tokenu, který je vám přidělen po registraci na HlidacStatu.cz. 
 Autentizační token je nutno odesílat v hlavičce každého požadavku na API.
@@ -106,23 +106,27 @@ Autentizační token pro volání API najdete na https://www.hlidacstatu.cz/api.
 Zakázky malého rozsahu jsou Hlídačem státu stáhnuty a zkonvertovány do JSON.
 
 1. Získat další zakázku malého rozsahu, která nebyla zpracována, z domény určené parametrem:
-  `curl -X GET https://www.hlidacstatu.cz/Api/v1/VZMRList?domena=mfcr.ezak.cz -H 'Authorization: Token XYZABCD'`
-  API vrátí pole ID identifikátorů zakázek, které je potřeba zpracovat.
+  `curl -X GET https://www.hlidacstatu.cz/Api/v1/VZProfilesList -H 'Authorization: Token XYZABCD'`
+  API vrátí pole 250 profilů zadavatelů (id, URL profilu a pocet nezpracovanych zakazek), seřazených podle počtu nezpracovaných zakázek.
 
-2. Získat samotnou zakázku podle ID
-  `curl -X GET https://www.hlidacstatu.cz/Api/v1/VZMRDetail?id=<id zakazky> -H 'Authorization: Token XYZABCD'`
- 
-Zpracování - transformace zakázky
+2. Získat zakázky z profilu
+  `curl -X GET https://www.hlidacstatu.cz/Api/v1/VZList/<id profilu zadavatele> -H 'Authorization: Token XYZABCD'`
+Vrátí 50 zakázek (plné záznamy), ze seznamu dosud nezpracovaných zakázek z profilu zadavatele.
+
+
+**Zpracování - transformace zakázky**
 
 3. V JSON zakázky je pole `dokument`, které v atributu `url` obsahuje URL na HTML stránku, odkud je možné stáhnout binární soubor (PDF, Word, apod) se zadávací dokumentací. Cílem je získat URL samotného binárního souboru.
 
 4. Převést zakázku do cílové datové struktury včetně URL na samotné soubory se zadávací dokumentací. Popisné atributy dokumentů je nutné také převést.
 
-5. Poslat zakázku v cílové datové strukturě na Hlídač státu
+5. Poslat jednu transformovanou zakázku v cílové datové strukturě na Hlídač státu 
   `curl -X POST https://www.hlidacstatu.cz/Api/v1/VZDetail?id=<id zakazky> -H 'Authorization: Token XYZABCD'
        -d '{... json ...}'
   `
-6. zpět na 2 pro další zakázku ze seznamu zakázek získaných v 1.
+  *Toto API bude dostupné během 23.6.2018*
+  
+6. a takto pro  další zakázky ze seznamu zakázek získaných v 2.
 
 Můžete volat API multithreadově, prosíme však o přiměřenou zátěž.
 
