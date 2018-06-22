@@ -40,9 +40,13 @@ function download($url, $headers = null) {
 	if ((!defined('CACHE_READS') || CACHE_READS) && file_exists($cache)) {
 		return file_get_contents($cache);
 	}
+	$userAgent = 'HlidacStatu/verejne-zakazky (https://github.com/HlidacStatu/verejne-zakazky)';
+	if (defined('AUTH_TOKEN')) {
+		$userAgent .= ' User/' . substr(AUTH_TOKEN, 0, 8);
+	}
 	$context = stream_context_create(array('http' => array(
 		'header' => $headers,
-		'user_agent' => 'HlidacStatu/verejne-zakazky (https://github.com/HlidacStatu/verejne-zakazky)',
+		'user_agent' => $userAgent,
 	)));
 	$file = file_get_contents($url, false, $context);
 	if ($file) {
