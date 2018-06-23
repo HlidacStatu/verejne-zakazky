@@ -119,7 +119,7 @@ function price($price) {
 	if (preg_match('~^\s*([\d  ]+)(?:,(\d\d))?\s+(\w+)~u', $price, $match)) { // Contains non-breaking space.
 		list(, $amount, $decimal, $currency) = $match;
 		return array(
-			'amount' => (int) round(preg_replace('~[  ]~', '', $amount) . ".$decimal"),
+			'amount' => preg_replace('~[  ]~', '', $amount) . ".$decimal",
 			'currency' => $currency,
 		);
 	}
