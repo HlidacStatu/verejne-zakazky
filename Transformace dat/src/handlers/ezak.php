@@ -1,7 +1,7 @@
 <?php
 include_once __DIR__ . "/../util.php";
 
-function krajbezkorupce(stdClass $result) {
+function ezak(stdClass $result) {
 	if (!$result->Dokumenty) {
 		return;
 	}

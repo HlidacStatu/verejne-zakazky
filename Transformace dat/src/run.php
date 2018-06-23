@@ -2,7 +2,7 @@
 <?php
 include_once __DIR__ . "/util.php";
 include_once __DIR__ . "/handlers/eZakazky.php";
-include_once __DIR__ . "/handlers/krajbezkorupce.php";
+include_once __DIR__ . "/handlers/ezak.php";
 include_once __DIR__ . "/handlers/vhodneUverejneni.php";
 
 $handlers = array(
@@ -14,7 +14,7 @@ $handlers = array(
 	'www.tenderarena.cz' => 'directUrl',
 	'nen.nipez.cz' => 'directUrl',
 	'www.kdv.cz' => 'directUrl',
-	'zakazky.krajbezkorupce.cz' => 'krajbezkorupce',
+	'zakazky.krajbezkorupce.cz' => 'ezak',
 	// www.profilyzadavatelu.cz redirects to www.tenderarena.cz.
 );
 if ($argc > 1) {
