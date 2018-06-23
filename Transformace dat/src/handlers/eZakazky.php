@@ -10,11 +10,7 @@ function eZakazky(stdClass $result) {
 		
 		$result->LhutaDoruceni = isoDate($xpath->evaluate("//th[.='Konec lhůty pro podání nabídek:']/following-sibling::td")->item(0)->textContent);
 		
-		$predpokladanaHodnota = price($xpath->evaluate("//th[.='Předpokládaná hodnota VZ:']/following-sibling::td")->item(0)->textContent);
-		if ($predpokladanaHodnota) {
-			$result->OdhadovanaHodnotaBezDPH = $predpokladanaHodnota['amount'];
-			$result->OdhadovanaHodnotaMena = $predpokladanaHodnota['currency'];
-		}
+		setOdhadovanaHodnota($xpath->evaluate("//th[.='Předpokládaná hodnota VZ:']/following-sibling::td")->item(0)->textContent, $result);
 	}
 	
 	foreach ($result->Dokumenty as &$dokument) {

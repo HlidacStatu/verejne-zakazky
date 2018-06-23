@@ -120,6 +120,19 @@ function price($price) {
 	return false;
 }
 
+/** Sets fields OdhadovanaHodnotaBezDPH and OdhadovanaHodnotaMena if $price is valid price.
+ * @param string
+ * @param stdClass
+ * @return 
+ */
+function setOdhadovanaHodnota($price, stdClass $result) {
+	$odhadovanaHodnota = price($price);
+	if ($odhadovanaHodnota) {
+		$result->OdhadovanaHodnotaBezDPH = $odhadovanaHodnota['amount'];
+		$result->OdhadovanaHodnotaMena = $odhadovanaHodnota['currency'];
+	}
+}
+
 /** Copy OficialUrl to DirectUrl in all $result->Dokumenty.
  * @param stdClass Modified.
  */

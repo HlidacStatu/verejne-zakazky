@@ -23,11 +23,7 @@ function krajbezkorupce(stdClass $result) {
 	
 	// Předpokládaná hodnota:<b>$OdhadovanaHodnotaBezDPH $OdhadovanaHodnotaMena bez DPH</b>
 	// TODO: Following <h4>Předpokládaná hodnota</h4> at https://zakazky.krajbezkorupce.cz/contract_display_12345.html
-	$predpokladanaHodnota = price($xpath->evaluate("//li[starts-with(., 'Předpokládaná hodnota')]/b")->item(0)->textContent);
-	if ($predpokladanaHodnota) {
-		$result->OdhadovanaHodnotaBezDPH = $predpokladanaHodnota['amount'];
-		$result->OdhadovanaHodnotaMena = $predpokladanaHodnota['currency'];
-	}
+	setOdhadovanaHodnota($xpath->evaluate("//li[starts-with(., 'Předpokládaná hodnota')]/b")->item(0)->textContent, $result);
 	
 	$directUrls = array();
 	foreach ($xpath->evaluate("//tr[starts-with(td/a/@href, 'document_download')]") as $tr) {

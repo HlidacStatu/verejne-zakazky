@@ -22,11 +22,7 @@ function vhodneUverejneni(stdClass $result) {
 		$result->LhutaDoruceni = isoDate($lhutaDoruceni->item(0)->textContent);
 	}
 	
-	$predpokladanaHodnota = price($xpath->evaluate("//tr[th='Předpokládaná hodnota v Kč bez DPH']/td")->item(0)->textContent);
-	if ($predpokladanaHodnota) {
-		$result->OdhadovanaHodnotaBezDPH = $predpokladanaHodnota['amount'];
-		$result->OdhadovanaHodnotaMena = $predpokladanaHodnota['currency'];
-	}
+	setOdhadovanaHodnota($xpath->evaluate("//tr[th='Předpokládaná hodnota v Kč bez DPH']/td")->item(0)->textContent, $result);
 	
 	$result->CPV = array();
 	foreach ($xpath->evaluate("//tr[th='Předmět CPV']/td/ul/li") as $li) {
