@@ -1,5 +1,3 @@
-# Veřejné zakázky na Hlídači Státu
+# Veřejné zakázky na Hlídači státu
 
-popis
-
-
+Tento adresář je zpřístupněn na https://hlidacstatu.github.io/verejne-zakazky/.

@@ -90,7 +90,7 @@ Struktura je totožná jako cílová datová struktura, je potřeba "pouze dopln
 
 #### Datová struktura zakázek malého rozsahu
 Zakázky malého rozsahu jsou získány z XML exportu profilu zadavatele. Hlídač státu toto XML 1:1 bez jakýchkoliv úprav konvertuje do JSON. 
-Popis formátu (adekvátně i JSON struktur) s popisem XML a XSD schémat je možno stáhnout přímo z prohlížeče ve formátu zip z internetové stránky http://www.isvz.cz/ProfilyZadavatelu/Profil_Zadavatele_134_2016_SchemaVZ.zip ([rozbalené](Profil_Zadavatele_134_2016_SchemaVZ.xsd)).
+Popis formátu (adekvátně i JSON struktur) s popisem XML a XSD schémat je možno stáhnout přímo z prohlížeče ve formátu zip z internetové stránky http://www.isvz.cz/ProfilyZadavatelu/Profil_Zadavatele_134_2016_SchemaVZ.zip ([rozbalené](https://hlidacstatu.github.io/verejne-zakazky/Profil_Zadavatele_134_2016_SchemaVZ.xsd)).
 
 
 ### Dostupná API Hlídače státu - !! již dostupná
