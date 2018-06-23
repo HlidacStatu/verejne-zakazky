@@ -44,7 +44,7 @@ $demoUrls = array(
 
 // Single threaded to not overload servers.
 foreach ($handlers as $server => $handler) {
-	//~ $profil = json_decode(download('https://www.hlidacstatu.cz/Api/v1/VZMRList?domena=' . urlencode($server), 'Authorization: Token ' . AUTH_TOKEN));
+	//~ $profil = json_decode(download('https://www.hlidacstatu.cz/Api/v1/VZMRList?domena=' . urlencode($server))); // TODO: Delete cache.
 	$profil = simplexml_load_string(download($demoUrls[$server]));
 	$zadavatel = array(
 		'ICO' => $profil->zadavatel->ico_vlastni,

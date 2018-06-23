@@ -32,17 +32,21 @@ function absoluteUrl($href, $base) {
 
 /** Downloads contents of HTTP or HTTPS URL and save it to cache/.
  * @param string
- * @param string
  * @return string or false on failure.
  */
-function download($url, $headers = null) {
+function download($url) {
 	$cache = cachePath($url);
 	if ((!defined('CACHE_READS') || CACHE_READS) && file_exists($cache)) {
 		return file_get_contents($cache);
 	}
 	$userAgent = 'HlidacStatu/verejne-zakazky (https://github.com/HlidacStatu/verejne-zakazky)';
+	$headers = null;
 	if (defined('AUTH_TOKEN')) {
-		$userAgent .= ' User/' . substr(AUTH_TOKEN, 0, 8);
+		if (preg_match('~^https://www\.hlidacstatu\.cz/Api/~i', $url)) {
+			$headers = 'Authorization: Token ' . AUTH_TOKEN;
+		} else {
+			$userAgent .= ' User/' . substr(AUTH_TOKEN, 0, 8);
+		}
 	}
 	$context = stream_context_create(array('http' => array(
 		'header' => $headers,
@@ -67,6 +71,8 @@ function cachePath($url) {
 	$return = $url;
 	$return = preg_replace('~#.*~', '', $return);
 	$return = preg_replace('~\?~', '^', $return); // Not allowed on Windows.
+	// TODO: Handle preg_match('~/$~', $url).
+	// TODO: Handle 'a.html' versus 'a.html/XMLdataVZ'.
 	$return = preg_replace('~^https?://~', __DIR__ . '/../cache/', $return);
 	return $return;
 }
