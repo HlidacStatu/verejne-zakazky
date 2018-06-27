@@ -2,7 +2,7 @@
 
 ## Transformace dat
 
-Český stát se snaží poskytovat open data týkající se veřejných zakázek, ale moc mu to nejde. Nějaká data poskytuje, ale jsou větsinově neúplná, neobsahují zadávací dokumentaci a velmi často jsou i nevalidní.
+Český stát se snaží poskytovat open data týkající se veřejných zakázek, ale moc mu to nejde. Nějaká data poskytuje, ale jsou většinově neúplná, neobsahují zadávací dokumentaci a velmi často jsou i nevalidní.
 
 **A to bychom chtěli s vaší pomocí změnit.**
 
@@ -100,7 +100,7 @@ Autentizační token je nutno odesílat v hlavičce každého požadavku na API.
 Příklad k použití:
 `curl -X GET https://www.hlidacstatu.cz/Api/v1/Detail/204737 -H 'Authorization: Token XYZABCD'`
 
-Autentizační token pro volání API najdete na https://www.hlidacstatu.cz/api. Na stejném místě najdete i přehled všech nabízenách API serveru.
+Autentizační token pro volání API najdete na https://www.hlidacstatu.cz/api. Na stejném místě najdete i přehled všech nabízených API serveru.
 
 #### Získání nezpracované zakázky malého rozsahu
 Zakázky malého rozsahu jsou Hlídačem státu stáhnuty a zkonvertovány do JSON.
