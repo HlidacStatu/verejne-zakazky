@@ -48,10 +48,10 @@ function download($url) {
 			$userAgent .= ' User/' . substr(AUTH_TOKEN, 0, 8);
 		}
 	}
-	$context = stream_context_create(array('http' => array(
-		'header' => $headers,
-		'user_agent' => $userAgent,
-	)));
+	$context = stream_context_create(array(
+		'http' => array('header' => $headers, 'user_agent' => $userAgent),
+		'ssl' => array('verify_peer' => false), // Unknown issuer at https://zakazky.lesycr.cz/.
+	));
 	$file = file_get_contents($url, false, $context);
 	if ($file) {
 		$dir = dirname($cache);
@@ -119,7 +119,7 @@ function price($price) {
 	if (preg_match('~^\s*([\d  ]+)(?:,(\d\d))?\s+(\w+)~u', $price, $match)) { // Contains non-breaking space.
 		list(, $amount, $decimal, $currency) = $match;
 		return array(
-			'amount' => preg_replace('~[  ]~', '', $amount) . ".$decimal",
+			'amount' => floatval(preg_replace('~[  ]~', '', $amount) . ".$decimal"),
 			'currency' => $currency,
 		);
 	}

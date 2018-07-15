@@ -20,7 +20,7 @@ class TestingSubject {
 	 */
 	function isEqualTo($expected) {
 		if ($this->actual !== $expected) {
-			throw new Exception("$this->actual !== $expected");
+			throw new Exception(var_export($this->actual, true) . " !== " . var_export($expected, true));
 		}
 	}
 	

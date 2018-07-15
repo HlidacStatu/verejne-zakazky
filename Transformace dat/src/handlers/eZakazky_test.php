@@ -12,7 +12,7 @@ function testEZakazky() {
 	);
 	eZakazky($result);
 	assertThat($result->LhutaDoruceni)->isEqualTo('2018-04-19');
-	assertThat($result->OdhadovanaHodnotaBezDPH)->isEqualTo(800000);
+	assertThat($result->OdhadovanaHodnotaBezDPH)->isEqualTo(800000.);
 	assertThat($result->OdhadovanaHodnotaMena)->isEqualTo('Kč');
 	assertThat($result->Dokumenty[0]['DirectUrl'])->isEqualTo("https://$dokumentUrl");
 	assertThat($result->Dokumenty[0]['OficialUrl'])->isEqualTo("https://$dokumentUrl");

@@ -35,11 +35,11 @@ function testIsoDate() {
 }
 
 function testPrice() {
-	$expected = array('amount' => 12345, 'currency' => 'Kč');
+	$expected = array('amount' => 12345., 'currency' => 'Kč');
 	assertThat(price('12 345 Kč'))->isEqualTo($expected);
 	assertThat(price('12 345 Kč'))->isEqualTo($expected); // Non-breaking space.
 	assertThat(price('12 345 Kč bez DPH'))->isEqualTo($expected);
-	assertThat(price('12 344,56 Kč'))->isEqualTo($expected);
+	assertThat(price('12 345,67 Kč'))->isEqualTo(array('amount' => 12345.67, 'currency' => 'Kč'));
 	assertThat(price('   12 345 Kč   '))->isEqualTo($expected);
 }
 

@@ -93,7 +93,7 @@ Zakázky malého rozsahu jsou získány z XML exportu profilu zadavatele. Hlída
 Popis formátu (adekvátně i JSON struktur) s popisem XML a XSD schémat je možno stáhnout přímo z prohlížeče ve formátu zip z internetové stránky http://www.isvz.cz/ProfilyZadavatelu/Profil_Zadavatele_134_2016_SchemaVZ.zip ([rozbalené](https://hlidacstatu.github.io/verejne-zakazky/Profil_Zadavatele_134_2016_SchemaVZ.xsd)).
 
 
-### Dostupná API Hlídače státu - !! již dostupná
+### Dostupná API Hlídače státu
 
 Autorizace je prováděna pomocí autentizačního tokenu, který je vám přidělen po registraci na HlidacStatu.cz. 
 Autentizační token je nutno odesílat v hlavičce každého požadavku na API.
@@ -121,7 +121,7 @@ Vrátí 50 zakázek (plné záznamy), ze seznamu dosud nezpracovaných zakázek 
 4. Převést zakázku do cílové datové struktury včetně URL na samotné soubory se zadávací dokumentací. Popisné atributy dokumentů je nutné také převést.
 
 5. Poslat jednu transformovanou zakázku v cílové datové strukturě na Hlídač státu
-  `curl -X POST https://www.hlidacstatu.cz/Api/v1/VZDetail?id=<id zakazky> -H 'Authorization: Token XYZABCD'
+  `curl -X POST 'https://www.hlidacstatu.cz/Api/v1/VZDetail?id=<id zakazky>' -H 'Authorization: Token XYZABCD'
        -d '{... json ...}'
   `
   *Toto API bude dostupné během 23.6.2018*
