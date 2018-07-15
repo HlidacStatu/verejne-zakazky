@@ -49,7 +49,11 @@ foreach (json_decode(download($url)) as $profile) {
 		// Not set according to #4: $result->StavVZ = $zakazka->VZ->stav_vz->Value;
 		if ($zakazka->dodavatel) {
 			// TODO: Get from $zakazka->VZ->cast_zakazky[]->dodavatel if available.
-			$result->KonecnaHodnotaBezDPH = $zakazka->dodavatel[0]->cena_celkem_dle_smlouvy_bez_DPH->Value; // TODO: Sum?
+			$konecnaHodnotaBezDPH = 0;
+			foreach ($zakazka->dodavatel as $dodavatel) {
+				$konecnaHodnotaBezDPH += $dodavatel->cena_celkem_dle_smlouvy_bez_DPH->Value;
+			}
+			$result->KonecnaHodnotaBezDPH = $konecnaHodnotaBezDPH;
 			$result->KonecnaHodnotaMena = $zakazka->dodavatel[0]->cena_celkem_dle_smlouvy_bez_DPH->menaKod;
 		}
 		$result->Dokumenty = array();
