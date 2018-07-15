@@ -46,7 +46,7 @@ foreach (json_decode(download($url)) as $profile) {
 		$result->NazevZakazky = $zakazka->VZ->nazev_vz->Value;
 		$result->DatumUverejneni = $zakazka->VZ->datum_cas_zverejneni->Value;
 		$result->DatumUzavreniSmlouvy = $zakazka->VZ->datum_uzavreni_smlouvy->Value;
-		$result->StavVZ = $zakazka->VZ->stav_vz->Value; // TODO: int.
+		// Not set according to #4: $result->StavVZ = $zakazka->VZ->stav_vz->Value;
 		if ($zakazka->dodavatel) {
 			// TODO: Get from $zakazka->VZ->cast_zakazky[]->dodavatel if available.
 			$result->KonecnaHodnotaBezDPH = $zakazka->dodavatel[0]->cena_celkem_dle_smlouvy_bez_DPH->Value; // TODO: Sum?
