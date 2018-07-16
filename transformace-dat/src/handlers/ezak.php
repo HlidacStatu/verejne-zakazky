@@ -4,7 +4,7 @@ include_once __DIR__ . "/../util.php";
 function ezak(stdClass $result, stdClass $profile) {
 	$searchUrl = absoluteUrl("/contract_search.html?system_number=$result->EvidencniCisloZakazky&archive=ALL&submit_search=1", $profile->url);
 	$dom = downloadHtml($searchUrl);
-	$url = (new DOMXPath($dom))->evaluate("//a[starts-with(@href, 'contract_display_')]")->item(0)->getAttribute('href');
+	$url = (new DOMXPath($dom))->evaluate("string(//a[starts-with(@href, 'contract_display_')]/@href)");
 	$url = absoluteUrl($url, $searchUrl);
 	$html = download($url);
 	$result->RawHtml = "$html\n<!-- Downloaded from $url -->";
@@ -12,15 +12,15 @@ function ezak(stdClass $result, stdClass $profile) {
 	$xpath = new DOMXPath($dom);
 	
 	// Stručný popis předmětu:<br>$PopisZakazky
-	$result->PopisZakazky = $xpath->evaluate("//p[starts-with(., 'Stručný popis předmětu:')]")->item(0)->childNodes->item(2)->textContent;
+	$result->PopisZakazky = $xpath->evaluate("string(//p[starts-with(., 'Stručný popis předmětu:')]/text()[2])");
 	
-	if (preg_match('~(?:Nabídku podat do|Datum nákupu / nabídek):\s*([\d. :]+)~', $xpath->evaluate("id('centerBlock')")->item(0)->textContent, $match)) {
+	if (preg_match('~(?:Nabídku podat do|Datum nákupu / nabídek):\s*([\d. :]+)~', $xpath->evaluate("string(id('centerBlock'))"), $match)) {
 		$result->LhutaDoruceni = isoDate($match[1]);
 	}
 	
 	// Předpokládaná hodnota:<b>$OdhadovanaHodnotaBezDPH $OdhadovanaHodnotaMena bez DPH</b>
 	// TODO: Following <h4>Předpokládaná hodnota</h4> at https://zakazky.krajbezkorupce.cz/contract_display_12345.html
-	setOdhadovanaHodnota($xpath->evaluate("//li[starts-with(., 'Předpokládaná hodnota')]/b")->item(0)->textContent, $result);
+	setOdhadovanaHodnota($xpath->evaluate("string(//li[starts-with(., 'Předpokládaná hodnota')]/b)"), $result);
 	
 	$directUrls = array();
 	foreach ($xpath->evaluate("//tr[starts-with(td/a/@href, 'document_download_')]") as $tr) {
@@ -38,7 +38,7 @@ function ezak(stdClass $result, stdClass $profile) {
 		} else {
 			// TODO: /document_download_1941.html -> /document_1941/_
 			$dom = downloadHtml($dokument['OficialUrl']);
-			$dokument['DirectUrl'] = ezakDirectUrl((new DOMXPath($dom))->evaluate("//tr[th='Jméno souboru:']/td/a")->item(0)->getAttribute('href'), $dokument['OficialUrl']);
+			$dokument['DirectUrl'] = ezakDirectUrl((new DOMXPath($dom))->evaluate("string(//tr[th='Jméno souboru:']/td/a/@href)"), $dokument['OficialUrl']);
 		}
 	}
 	unset($dokument);

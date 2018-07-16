@@ -8,9 +8,9 @@ function eZakazky(stdClass $result, stdClass $profile) {
 		$dom = parseHtml($html);
 		$xpath = new DOMXPath($dom);
 		
-		$result->LhutaDoruceni = isoDate($xpath->evaluate("//th[.='Konec lhůty pro podání nabídek:']/following-sibling::td")->item(0)->textContent);
+		$result->LhutaDoruceni = isoDate($xpath->evaluate("string(//th[.='Konec lhůty pro podání nabídek:']/following-sibling::td)"));
 		
-		setOdhadovanaHodnota($xpath->evaluate("//th[.='Předpokládaná hodnota VZ:']/following-sibling::td")->item(0)->textContent, $result);
+		setOdhadovanaHodnota($xpath->evaluate("string(//th[.='Předpokládaná hodnota VZ:']/following-sibling::td)"), $result);
 	}
 	
 	foreach ($result->Dokumenty as &$dokument) {

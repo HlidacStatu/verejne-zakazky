@@ -76,7 +76,7 @@ foreach (json_decode(download($url)) as $profile) {
 		preg_match('~^https?://([^/]+)~', $profile->url, $match);
 		list(, $domain) = $match;
 		$dom = downloadHtml($profile->url);
-		if (preg_match('~\bE-ZAK\b~', (new DOMXPath($dom))->evaluate("//title")->item(0)->textContent)) {
+		if (preg_match('~\bE-ZAK\b~', (new DOMXPath($dom))->evaluate("string(//title)"))) {
 			$handlers[$domain] = 'ezak';
 		}
 		if (isset($handlers[$domain])) {
