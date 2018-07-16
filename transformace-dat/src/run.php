@@ -93,7 +93,7 @@ foreach (json_decode(download($url)) as $profile) {
 			*/
 			$handlers[$domain]($result, $profile);
 		}
-		print_r($result);
+		echo uploadJson("https://www.hlidacstatu.cz/Api/v1/VZDetail?id=$result->EvidencniCisloZakazky", $result);
 		exit;
 	}
 }

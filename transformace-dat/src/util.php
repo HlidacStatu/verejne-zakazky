@@ -30,6 +30,26 @@ function absoluteUrl($href, $base) {
 	return $prefix . $path . $suffix;
 }
 
+/** Creates stream context.
+ * @param string
+ * @param array
+ * @return resource
+ */
+function getStreamContext($url, $headers = array()) {
+	$userAgent = 'HlidacStatu/verejne-zakazky (https://github.com/HlidacStatu/verejne-zakazky)';
+	if (defined('AUTH_TOKEN')) {
+		if (preg_match('~^https://www\.hlidacstatu\.cz/Api/~i', $url)) {
+			$headers[] = 'Authorization: Token ' . AUTH_TOKEN;
+		} else {
+			$userAgent .= ' User/' . substr(AUTH_TOKEN, 0, 8);
+		}
+	}
+	return stream_context_create(array(
+		'http' => array('header' => $headers, 'user_agent' => $userAgent),
+		'ssl' => array('verify_peer' => false), // Unknown issuer at https://zakazky.lesycr.cz/.
+	));
+}
+
 /** Downloads contents of HTTP or HTTPS URL and save it to cache/.
  * @param string
  * @return string or false on failure.
@@ -39,20 +59,7 @@ function download($url) {
 	if ((!defined('CACHE_READS') || CACHE_READS) && file_exists($cache)) {
 		return file_get_contents($cache);
 	}
-	$userAgent = 'HlidacStatu/verejne-zakazky (https://github.com/HlidacStatu/verejne-zakazky)';
-	$headers = null;
-	if (defined('AUTH_TOKEN')) {
-		if (preg_match('~^https://www\.hlidacstatu\.cz/Api/~i', $url)) {
-			$headers = 'Authorization: Token ' . AUTH_TOKEN;
-		} else {
-			$userAgent .= ' User/' . substr(AUTH_TOKEN, 0, 8);
-		}
-	}
-	$context = stream_context_create(array(
-		'http' => array('header' => $headers, 'user_agent' => $userAgent),
-		'ssl' => array('verify_peer' => false), // Unknown issuer at https://zakazky.lesycr.cz/.
-	));
-	$file = file_get_contents($url, false, $context);
+	$file = file_get_contents($url, false, getStreamContext($url));
 	if ($file) {
 		$dir = dirname($cache);
 		if (!file_exists($dir)) {
@@ -61,6 +68,29 @@ function download($url) {
 		file_put_contents($cache, $file);
 	}
 	return $file;
+}
+
+/** Posts data to HTTP or HTTPS URL.
+ * @param string
+ * @param string
+ * @param string
+ * @return string or false on failure.
+ */
+function upload($url, $data, $contentType) {
+	$context = getStreamContext($url, array("Content-Type: $contentType"));
+	stream_context_set_option($context, array(
+		'http' => array('method' => 'POST', 'content' => $data),
+	));
+	return file_get_contents($url, false, $context);
+}
+
+/** Posts JSON data to HTTP or HTTPS URL.
+ * @param string
+ * @param stdClass
+ * @return string or false on failure.
+ */
+function uploadJson($url, stdClass $data) {
+	return upload($url, json_encode($data), "application/json");
 }
 
 /** Returns path to the cached file.
