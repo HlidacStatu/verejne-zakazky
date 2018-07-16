@@ -124,7 +124,6 @@ Vrátí 50 zakázek (plné záznamy), ze seznamu dosud nezpracovaných zakázek 
   `curl -X POST 'https://www.hlidacstatu.cz/Api/v1/VZDetail?id=<id zakazky>' -H 'Authorization: Token XYZABCD'
        -d '{... json ...}'
   `
-  *Toto API bude dostupné během 23.6.2018*
   
 6. A takto pro  další zakázky ze seznamu zakázek získaných v 2.
 
