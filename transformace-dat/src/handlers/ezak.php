@@ -36,9 +36,9 @@ function ezak(stdClass $result, stdClass $profile) {
 		if (isset($directUrls[$dokument['OficialUrl']])) {
 			$dokument['DirectUrl'] = $directUrls[$dokument['OficialUrl']];
 		} else {
+			// TODO: /document_download_1941.html -> /document_1941/_
 			$dom = downloadHtml($dokument['OficialUrl']);
-			$xpath = new DOMXPath($dom);
-			$dokument['DirectUrl'] = ezakDirectUrl($xpath->evaluate("//tr[th='Jméno souboru:']/td/a")->item(0)->getAttribute('href'), $dokument['OficialUrl']);
+			$dokument['DirectUrl'] = ezakDirectUrl((new DOMXPath($dom))->evaluate("//tr[th='Jméno souboru:']/td/a")->item(0)->getAttribute('href'), $dokument['OficialUrl']);
 		}
 	}
 	unset($dokument);

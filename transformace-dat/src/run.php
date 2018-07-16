@@ -14,9 +14,6 @@ $handlers = array(
 	'www.tenderarena.cz' => 'directUrl',
 	'nen.nipez.cz' => 'directUrl',
 	'www.kdv.cz' => 'directUrl',
-	'zakazky.cenakhk.cz' => 'ezak',
-	'zakazky.krajbezkorupce.cz' => 'ezak',
-	'zakazky.lesycr.cz' => 'ezak',
 	// www.profilyzadavatelu.cz redirects to www.tenderarena.cz.
 );
 $profileId = ($argc == 2 ? $argv[1] : null);
@@ -78,6 +75,10 @@ foreach (json_decode(download($url)) as $profile) {
 		
 		preg_match('~^https?://([^/]+)~', $profile->url, $match);
 		list(, $domain) = $match;
+		$dom = downloadHtml($profile->url);
+		if (preg_match('~\bE-ZAK\b~', (new DOMXPath($dom))->evaluate("//title")->item(0)->textContent)) {
+			$handlers[$domain] = 'ezak';
+		}
 		if (isset($handlers[$domain])) {
 			/* Fields to populate:
 			PopisZakazky
