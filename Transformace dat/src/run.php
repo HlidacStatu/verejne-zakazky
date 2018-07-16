@@ -89,7 +89,7 @@ foreach (json_decode(download($url)) as $profile) {
 			Kriteria
 			CPV
 			*/
-			$handlers[$domain]($result);
+			$handlers[$domain]($result, $profile);
 		}
 		print_r($result);
 		exit;

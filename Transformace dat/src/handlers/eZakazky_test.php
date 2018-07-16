@@ -10,7 +10,7 @@ function testEZakazky() {
 		'HtmlUrl' => 'https://www.e-zakazky.cz/profil-zadavatele/cd02694b-87b6-47bc-8f1b-38c30587962c/zakazka/P18V00000003',
 		'Dokumenty' => array($dokument),
 	);
-	eZakazky($result);
+	eZakazky($result, new stdClass);
 	assertThat($result->LhutaDoruceni)->isEqualTo('2018-04-19');
 	assertThat($result->OdhadovanaHodnotaBezDPH)->isEqualTo(800000.);
 	assertThat($result->OdhadovanaHodnotaMena)->isEqualTo('Kč');

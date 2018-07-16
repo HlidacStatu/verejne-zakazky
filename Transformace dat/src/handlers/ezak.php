@@ -1,9 +1,9 @@
 <?php
 include_once __DIR__ . "/../util.php";
 
-function ezak(stdClass $result) {
+function ezak(stdClass $result, stdClass $profile) {
 	if (!$result->Dokumenty) {
-		// TODO: Get from /contract_search.html?system_number=$result->EvidencniCisloZakazky&archive=ALL&submit_search=1
+		// TODO: Get from /contract_search.html?system_number=$result->EvidencniCisloZakazky&archive=ALL&submit_search=1 - need $profile->url for absolute URL.
 		return;
 	}
 	$directUrls = array();

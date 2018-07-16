@@ -141,8 +141,9 @@ function setOdhadovanaHodnota($price, stdClass $result) {
 
 /** Copy OficialUrl to DirectUrl in all $result->Dokumenty.
  * @param stdClass Modified.
+ * @param stdClass
  */
-function directUrl(stdClass $result) {
+function directUrl(stdClass $result, stdClass $profile) {
 	foreach ($result->Dokumenty as &$dokument) {
 		$dokument['DirectUrl'] = $dokument['OficialUrl'];
 	}

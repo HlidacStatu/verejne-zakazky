@@ -1,7 +1,7 @@
 <?php
 include_once __DIR__ . '/../util.php';
 
-function vhodneUverejneni(stdClass $result) {
+function vhodneUverejneni(stdClass $result, stdClass $profile) {
 	if (!$result->Dokumenty) {
 		return;
 	}

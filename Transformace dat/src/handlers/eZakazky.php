@@ -1,7 +1,7 @@
 <?php
 include_once __DIR__ . "/../util.php";
 
-function eZakazky(stdClass $result) {
+function eZakazky(stdClass $result, stdClass $profile) {
 	if (isset($result->HtmlUrl)) {
 		$html = download($result->HtmlUrl);
 		$result->RawHtml = "$html\n<!-- Downloaded from $result->HtmlUrl -->";
@@ -19,5 +19,5 @@ function eZakazky(stdClass $result) {
 		}
 	}
 	unset($dokument);
-	directUrl($result);
+	directUrl($result, $profile);
 }

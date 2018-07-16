@@ -47,6 +47,6 @@ function testDirectUrl() {
 	$url = 'https://example.com/';
 	$dokument = array('OficialUrl' => $url);
 	$result = (object) array('Dokumenty' => array($dokument));
-	directUrl($result);
+	directUrl($result, new stdClass);
 	assertThat($result->Dokumenty[0]['DirectUrl'])->isEqualTo($url);
 }
