@@ -14,6 +14,7 @@ $handlers = array(
 	'www.tenderarena.cz' => 'directUrl',
 	'nen.nipez.cz' => 'directUrl',
 	'www.kdv.cz' => 'directUrl',
+	'zakazky.cenakhk.cz' => 'ezak',
 	'zakazky.krajbezkorupce.cz' => 'ezak',
 	'zakazky.lesycr.cz' => 'ezak',
 	// www.profilyzadavatelu.cz redirects to www.tenderarena.cz.
