@@ -4,6 +4,7 @@ include_once __DIR__ . "/util.php";
 include_once __DIR__ . "/handlers/eZakazky.php";
 include_once __DIR__ . "/handlers/ezak.php";
 include_once __DIR__ . "/handlers/vhodneUverejneni.php";
+include_once __DIR__ . "/handlers/zakazkyLesyCr.php";
 
 $handlers = array(
 	'www.vhodne-uverejneni.cz' => 'vhodneUverejneni',
@@ -14,6 +15,7 @@ $handlers = array(
 	'www.tenderarena.cz' => 'directUrl',
 	'nen.nipez.cz' => 'directUrl',
 	'www.kdv.cz' => 'directUrl',
+	'zakazky.lesycr.cz' => 'zakazkyLesyCr',
 	// www.profilyzadavatelu.cz redirects to www.tenderarena.cz.
 );
 $profileId = ($argc == 2 ? $argv[1] : null);
