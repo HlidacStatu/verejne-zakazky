@@ -9,3 +9,4 @@ Scraper může být velmi jednoduchý, lze se inspirovat u [těch stávajících
 Napsání scraperu pro daný server je hlavní část vaší práce. Kromě toho je potřeba získat seznam veřejných zakázek na daném serveru (poskytujeme API), pak konkrétní zakázku s informacemi z XML souboru (poskytujeme API) a následně uložit získané informace (poskytujeme API). To je v zásadě nezávislé na konkrétním serveru. [Postup](transformace-dat#získání-nezpracované-zakázky-malého-rozsahu)
 
 [Podrobná dokumentace](transformace-dat)
+[Otázky? Slack channel!](https://join.slack.com/t/hlidacstatu/shared_invite/enQtNDEyNjgxNzM3NTQxLTZiMzVmZmE4ZGQ0NzdiZDY2MTk3ZjA0OWI2ZmI3NGNjMjRmZjlhZDg0ODc1YmUzMTM0ZDVjYTQ4MmIxOGFiYWM)
